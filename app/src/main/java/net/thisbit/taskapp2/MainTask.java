@@ -1,5 +1,6 @@
 package net.thisbit.taskapp2;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by christian on 4/18/2016.
