@@ -7,25 +7,30 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="net.thisbit.taskapp2.MainActivity">
+    tools:context="net.thisbit.taskapp2.ShowTaskActivity">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Task"
-        android:id="@+id/button"
+        android:text="New Text"
+        android:id="@+id/showTaskTitleTextView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="buttonOnClickAddTask"
-        android:nestedScrollingEnabled="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Tasks"
-        android:id="@+id/button2"
-        android:onClick="buttonOnClickShowTasks"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/showTaskDescrTextView"
+        android:layout_below="@+id/showTaskTitleTextView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/showTaskIdTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

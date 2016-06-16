@@ -1,5 +1,11 @@
 package net.thisbit.taskapp2;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
 
 /**
  * Created by christian on 4/18/2016.
@@ -8,7 +14,6 @@ public class Singleton {
 
 
     private static Singleton mInstance = null;
-
     public static ArrayList<MainTask> myTasks = new ArrayList<MainTask>();
 
     public static Singleton getInstance() {
@@ -21,7 +26,10 @@ public class Singleton {
     }
 
     public void addTask(MainTask t) {
+        t.setTaskId(myTasks.size()+1);
         myTasks.add(t);
+
+
 
     }
 
@@ -30,7 +38,7 @@ public class Singleton {
     }
 
     public int getNumberOfTasks() {
-        return myTasks.size();
+        return myTasks.size() + 1;
     }
 
     public MainTask getMainTask(int position) {

@@ -1,6 +1,7 @@
 package net.thisbit.taskapp2;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by christian on 4/18/2016.
@@ -9,6 +10,7 @@ public class MainTask extends Task implements Serializable{
 
     private ArrayList<SubTask> subTasks;
     private int taskId;
+    private Date taskEDOC;
     /**
      *
      */
@@ -26,13 +28,12 @@ public class MainTask extends Task implements Serializable{
         this.description = desc;
         this.taskId = taskId;
 
+
     }
 
-    public int getTaskId() { return taskId;}
-
-    public void setTaskId(int taskId) { this.taskId = taskId;}
 
     public void addSubTask(SubTask thisSubTask) {
+        thisSubTask.setTaskId(subTasks.size() + 1);
         subTasks.add(thisSubTask);
     }
 }

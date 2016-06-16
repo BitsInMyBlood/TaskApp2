@@ -7,6 +7,7 @@ public class Task implements Serializable {
     String title;
     boolean isComplete = false;
     String description = "";
+    int taskId;
 
     public Task(){
 
@@ -21,7 +22,7 @@ public class Task implements Serializable {
     }
 
     public String toString() {
-        return "Task Title: " + this.getTitle();
+        return "ID:" + this.getTaskId() + "Title:" + this.getTitle();
     }
 
     public String getTitle() {
@@ -39,6 +40,15 @@ public class Task implements Serializable {
     public void setComplete() {this.isComplete = true;}
 
     public boolean getComplete() {return isComplete;}
+
+    public int getTaskId() { return taskId;}
+
+    public void setTaskId(int Id) {
+        this.taskId = Id;
+    }
+
+
+    }
 
 
 
