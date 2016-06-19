@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.ShowTaskActivity"
-    android:onClick="isCompleteOnClick">
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,7 +16,8 @@
         android:text="New Text"
         android:id="@+id/showTaskTitleTextView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,10 +42,10 @@
         android:layout_height="wrap_content"
         android:text="@string/is_complete"
         android:id="@+id/isCompleteCheckBox"
+        android:onClick="isCompleteOnClick"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="isCompleteOnClick" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -53,6 +54,7 @@
         android:text="@string/edit"
         android:id="@+id/editTaskButton"
         android:onClick="editTaskOnClick"
-        android:layout_alignTop="@+id/isCompleteCheckBox"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

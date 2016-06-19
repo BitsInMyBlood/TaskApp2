@@ -51,7 +51,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
         taskDescFieldTextView.setText(thisDescription);
         TextView taskIdFieldTextView = (TextView) findViewById(R.id.showTaskIdTextView);
-        taskIdFieldTextView.setText(thisTaskId);
+        taskIdFieldTextView.setText("ID: " + thisTaskId);
     }
 
     public void isCompleteOnClick(View v) {
