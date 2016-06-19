@@ -2,6 +2,7 @@ package net.thisbit.taskapp2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +16,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class EditTaskActivity extends AppCompatActivity {
-    EditText thisEditTaskTitleEditText;
-    EditText thisEditTaskDescrEditText;
+    private EditText thisEditTaskTitleEditText;
+    private EditText thisEditTaskDescrEditText;
     private int currentTaskItem = 0;
     private String thisTitle;
     private String thisDescription;
     private String thisTaskId;
-    private int thisPosition;
     private MainTask thisMainTask;
 
     @Override
@@ -29,9 +29,9 @@ public class EditTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
-        thisEditTaskTitleEditText = (EditText) findViewById(R.id.editTaskTitleEditText);
-        thisEditTaskDescrEditText = (EditText) findViewById(R.id.editTaskDescriptionEditText);
-
+        thisEditTaskTitleEditText = (EditText)findViewById(R.id.editTaskTitleEditText);
+        thisEditTaskDescrEditText = (EditText)findViewById(R.id.editTaskDescriptionEditText);
+        // grab the extras, position
         if(savedInstanceState == null) {
 
             Bundle extras = getIntent().getExtras();
@@ -39,12 +39,17 @@ public class EditTaskActivity extends AppCompatActivity {
                 currentTaskItem = 0;
             } else {
                 currentTaskItem = extras.getInt("position");
-                thisPosition = extras.getInt("position");
+
             }
         } else {
             currentTaskItem = (int) savedInstanceState.getSerializable("position");
 
         }
+        thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
+        thisEditTaskTitleEditText.setText(thisMainTask.getTitle());
+        thisEditTaskDescrEditText.setText(thisMainTask.getDescription());
+
+
 
     }
 
@@ -52,21 +57,33 @@ public class EditTaskActivity extends AppCompatActivity {
         // Grab the current contents of Title and Desc. fields
         thisTitle = thisEditTaskTitleEditText.getText().toString();
         thisDescription = thisEditTaskDescrEditText.getText().toString();
+        thisTaskId = Singleton.getInstance().getMainTask(currentTaskItem).getTaskId();
+
+        // Create a new MainTask
+        MainTask thisTask = new MainTask();
+
+        thisTask.setTitle(thisTitle);
+        thisTask.setDescription(thisDescription);
+
         // Get the MainTask to update
         thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
+
         // Update the task
         thisMainTask.setTitle(thisTitle);
         thisMainTask.setDescription(thisDescription);
+
         // Remove the old one
-        Singleton.getInstance().removeTask(thisPosition);
+        Singleton.getInstance().removeTask(currentTaskItem);
+
         // Add the updated
         Singleton.getInstance().addTask(thisMainTask);
+
         // Save it
         write();
         // Close this activity
-        finish();
+        ActivityCompat.finishAffinity(this);
         // Start a new activity, show tasks list
-        startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     public void write(){

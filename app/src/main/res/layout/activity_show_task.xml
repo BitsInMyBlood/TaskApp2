@@ -39,7 +39,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Is Complete?"
+        android:text="@string/is_complete"
         android:id="@+id/isCompleteCheckBox"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -50,10 +50,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
+        android:text="@string/edit"
         android:id="@+id/editTaskButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="editTaskOnClick" />
+        android:onClick="editTaskOnClick"
+        android:layout_alignTop="@+id/isCompleteCheckBox"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

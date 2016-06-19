@@ -19,7 +19,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     private String thisTitle;
     private String thisDescription;
     private String thisTaskId;
-    private int thisPosition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ShowTaskActivity extends AppCompatActivity {
                 currentTaskItem = 0;
             } else {
                 currentTaskItem = extras.getInt("position");
-                thisPosition = extras.getInt("position");
+
             }
         } else {
             currentTaskItem = (int) savedInstanceState.getSerializable("position");
@@ -55,9 +55,9 @@ public class ShowTaskActivity extends AppCompatActivity {
     }
 
     public void isCompleteOnClick(View v) {
-        MainTask thisTask = Singleton.getInstance().getMainTask(thisPosition);
+        MainTask thisTask = Singleton.getInstance().getMainTask(currentTaskItem);
         thisTask.isComplete = true;
-        Singleton.getInstance().getMyTasks().remove(thisPosition);
+        Singleton.getInstance().getMyTasks().remove(currentTaskItem);
         write();
         finish();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -67,7 +67,7 @@ public class ShowTaskActivity extends AppCompatActivity {
 
     public void editTaskOnClick(View v) {
         Intent showTaskIntent = new Intent(v.getContext(), EditTaskActivity.class);
-        showTaskIntent.putExtra("position", thisPosition);
+        showTaskIntent.putExtra("position", currentTaskItem);
 
 
         startActivityForResult(showTaskIntent, 0);

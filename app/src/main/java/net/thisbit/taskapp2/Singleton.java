@@ -27,8 +27,9 @@ public class Singleton {
     }
 
     public void addTask(MainTask t) {
-
+        t.setTaskId(t.getTitle().substring(0,2) + t.getDescription().substring(0,2));
         myTasks.add(t);
+
 
 
 
