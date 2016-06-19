@@ -35,11 +35,12 @@ public class Singleton {
     }
 
     public void removeTask(int position) {
+        completedTasks.add(myTasks.get(position));
         myTasks.remove(position);
     }
 
     public int getNumberOfTasks() {
-        return myTasks.size() + 1;
+        return myTasks.size();
     }
 
     public MainTask getMainTask(int position) {

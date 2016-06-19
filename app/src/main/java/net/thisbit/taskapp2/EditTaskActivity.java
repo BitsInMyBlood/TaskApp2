@@ -1,11 +1,11 @@
 package net.thisbit.taskapp2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,18 +14,23 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class ShowTaskActivity extends AppCompatActivity {
+public class EditTaskActivity extends AppCompatActivity {
+    EditText thisEditTaskTitleEditText;
+    EditText thisEditTaskDescrEditText;
     private int currentTaskItem = 0;
     private String thisTitle;
     private String thisDescription;
     private String thisTaskId;
     private int thisPosition;
+    private MainTask thisMainTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_task);
+        setContentView(R.layout.activity_edit_task);
 
+        thisEditTaskTitleEditText = (EditText) findViewById(R.id.editTaskTitleEditText);
+        thisEditTaskDescrEditText = (EditText) findViewById(R.id.editTaskDescriptionEditText);
 
         if(savedInstanceState == null) {
 
@@ -40,37 +45,28 @@ public class ShowTaskActivity extends AppCompatActivity {
             currentTaskItem = (int) savedInstanceState.getSerializable("position");
 
         }
-        //
-        MainTask thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
-        thisTitle = thisMainTask.getTitle();
-        thisDescription = thisMainTask.getDescription();
-        thisTaskId = thisMainTask.getTaskId();
 
-        TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
-        taskTitleFieldTextView.setText(thisTitle);
-        TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
-        taskDescFieldTextView.setText(thisDescription);
-        TextView taskIdFieldTextView = (TextView) findViewById(R.id.showTaskIdTextView);
-        taskIdFieldTextView.setText(thisTaskId);
     }
 
-    public void isCompleteOnClick(View v) {
-        MainTask thisTask = Singleton.getInstance().getMainTask(thisPosition);
-        thisTask.isComplete = true;
-        Singleton.getInstance().getMyTasks().remove(thisPosition);
+    public void editTaskSaveButtonOnClick(View v) {
+        // Grab the current contents of Title and Desc. fields
+        thisTitle = thisEditTaskTitleEditText.getText().toString();
+        thisDescription = thisEditTaskDescrEditText.getText().toString();
+        // Get the MainTask to update
+        thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
+        // Update the task
+        thisMainTask.setTitle(thisTitle);
+        thisMainTask.setDescription(thisDescription);
+        // Remove the old one
+        Singleton.getInstance().removeTask(thisPosition);
+        // Add the updated
+        Singleton.getInstance().addTask(thisMainTask);
+        // Save it
         write();
+        // Close this activity
         finish();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-
-    }
-
-    public void editTaskOnClick(View v) {
-        Intent showTaskIntent = new Intent(v.getContext(), EditTaskActivity.class);
-        showTaskIntent.putExtra("position", thisPosition);
-
-
-        startActivityForResult(showTaskIntent, 0);
+        // Start a new activity, show tasks list
+        startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
     }
 
     public void write(){
@@ -86,4 +82,6 @@ public class ShowTaskActivity extends AppCompatActivity {
         } catch (IOException e) { e.printStackTrace();
         }
     }
+
+
 }

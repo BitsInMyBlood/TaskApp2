@@ -26,7 +26,7 @@ public class ShowTasksListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_tasks_list);
-
+        setTitle("Total Tasks: " + Singleton.getInstance().getNumberOfTasks());
         Load();
 
         final ArrayAdapter<MainTask> taskListArrayAdapter = new ArrayAdapter<MainTask>(this, android.R.layout.simple_list_item_1, Singleton.myTasks);
