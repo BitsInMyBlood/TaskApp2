@@ -8,7 +8,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     private int currentTaskItem = 0;
     private String thisTitle;
     private String thisDescription;
-    private int thisTaskId;
+    private String thisTaskId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         MainTask thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
         thisTitle = thisMainTask.getTitle();
         thisDescription = thisMainTask.getDescription();
+        thisTaskId = thisMainTask.getTaskId();
 
         TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
         taskTitleFieldTextView.setText(thisTitle);

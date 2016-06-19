@@ -9,7 +9,6 @@ import java.util.Date;
 public class MainTask extends Task implements Serializable{
 
     private ArrayList<SubTask> subTasks;
-    private int taskId;
     private Date taskEDOC;
     /**
      *
@@ -23,7 +22,7 @@ public class MainTask extends Task implements Serializable{
      * @param title
 
      */
-    public MainTask(String title, String desc, int taskId) {
+    public MainTask(String title, String desc, String taskId) {
         this.title = title;
         this.description = desc;
         this.taskId = taskId;
@@ -33,7 +32,7 @@ public class MainTask extends Task implements Serializable{
 
 
     public void addSubTask(SubTask thisSubTask) {
-        thisSubTask.setTaskId(subTasks.size() + 1);
+        thisSubTask.setTaskId(thisSubTask.getTitle().substring(0,2) + thisSubTask.getDescription().substring(0,2));
         subTasks.add(thisSubTask);
     }
 }

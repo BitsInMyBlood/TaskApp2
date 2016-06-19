@@ -15,6 +15,7 @@ public class Singleton {
 
     private static Singleton mInstance = null;
     public static ArrayList<MainTask> myTasks = new ArrayList<MainTask>();
+    public static ArrayList<MainTask> completedTasks = new ArrayList<MainTask>();
 
     public static Singleton getInstance() {
         if (mInstance == null) {
@@ -26,7 +27,7 @@ public class Singleton {
     }
 
     public void addTask(MainTask t) {
-        t.setTaskId(myTasks.size()+1);
+
         myTasks.add(t);
 
 

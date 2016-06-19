@@ -44,14 +44,14 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "Loaded";
+                CharSequence text = "Saved";
 
-                Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+
 
                 String thisTitle = taskTitleEditText.getText().toString();
                 String thisDescr = taskDescrEditText.getText().toString();
-                Date thisDOC = taskDOCEditText.toString();
-                int thisId = Singleton.myTasks.size() + 1;
+
+                String thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
 
                 // Create the task, set the attributes
                 MainTask thisTask = new MainTask();
@@ -61,6 +61,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 // Add the Task
                 Singleton.getInstance().addTask(thisTask);
+
+                // Declare that its done
+                Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 
                 // Clear the Fields
                 taskTitleEditText.setText("");

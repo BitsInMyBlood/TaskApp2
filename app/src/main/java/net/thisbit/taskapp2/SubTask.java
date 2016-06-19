@@ -15,7 +15,7 @@ public class SubTask extends Task implements Serializable {
     }
 
     public String toString() {
-        return title;
+        return title + " , " + description;
     }
 
     public String getTitle() {
