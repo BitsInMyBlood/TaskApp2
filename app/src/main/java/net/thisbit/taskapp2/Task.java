@@ -23,7 +23,7 @@ public class Task implements Serializable {
     }
 
     public String toString() {
-        return "ID: " + this.getTaskId() + " Title: " + this.getTitle();
+        return "" + this.getTitle();
     }
 
     public String getTitle() {

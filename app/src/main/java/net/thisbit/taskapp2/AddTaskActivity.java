@@ -19,12 +19,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity {
     EditText taskTitleEditText;
     EditText taskDescrEditText;
     public static TextView textViewObj;
+    Calendar thisCal;
+    String thisTitle = "";
+    String thisDescr = "";
+    String thisEDOC = "";
+
 
 
 
@@ -34,12 +40,10 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         setTitle("Add a Task");
-
+        thisCal = DatePickerFragment.getCal();
         textViewObj = (TextView) findViewById(R.id.taskDOCTextView);
-
         taskTitleEditText = (EditText) findViewById(R.id.TaskTitleEditText);
         taskDescrEditText = (EditText) findViewById(R.id.TaskDescriptionEditText);
-
 
 
         final Button saveButton = (Button) findViewById(R.id.saveButton);
@@ -48,31 +52,32 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "Saved";
 
-
-
-                String thisTitle = taskTitleEditText.getText().toString();
-                String thisDescr = taskDescrEditText.getText().toString();
-                String thisEDOC = AddTaskActivity.textViewObj.getText().toString();
-                String thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
+                thisTitle = taskTitleEditText.getText().toString();
+                thisDescr = taskDescrEditText.getText().toString();
+                thisEDOC = AddTaskActivity.textViewObj.getText().toString();
+               // thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
 
                 // Create the task, set the attributes
                 MainTask thisTask = new MainTask();
                 thisTask.setTitle(thisTitle);
                 thisTask.setDescription(thisDescr);
-                thisTask.setTaskId(thisId);
-                thisTask.setEDOCString(thisEDOC);
+                //thisTask.setTaskId(thisId);
+                thisTask.setTaskEDOS(thisCal);
 
                 // Add the Task
                 Singleton.getInstance().addTask(thisTask);
 
+
                 // Declare that its done
+                CharSequence text = "Saved";
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 
                 // Clear the Fields
                 taskTitleEditText.setText("");
                 taskDescrEditText.setText("");
+                textViewObj.setText("");
+
 
 
                 write();

@@ -45,15 +45,13 @@ public class ShowTaskActivity extends AppCompatActivity {
         MainTask thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
         thisTitle = thisMainTask.getTitle();
         thisDescription = thisMainTask.getDescription();
-        thisTaskId = thisMainTask.getTaskId();
         thisEDOC = thisMainTask.getEDOCString();
 
         TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
         taskTitleFieldTextView.setText(thisTitle);
         TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
         taskDescFieldTextView.setText(thisDescription);
-        TextView taskIdFieldTextView = (TextView) findViewById(R.id.showTaskIdTextView);
-        taskIdFieldTextView.setText("ID: " + thisTaskId);
+
         TextView taskEDOCFieldTextView = (TextView) findViewById(R.id.showTaskEDOCTextView);
         assert taskEDOCFieldTextView != null;
         taskEDOCFieldTextView.setText(thisEDOC);

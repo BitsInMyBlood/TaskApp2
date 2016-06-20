@@ -1,6 +1,7 @@
 package net.thisbit.taskapp2;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
 public class MainTask extends Task implements Serializable{
 
     private ArrayList<SubTask> subTasks;
-    private Date taskEDOC;
+    private Calendar taskEDOC;
     private String taskEDOCString;
     /**
      *
@@ -27,8 +28,6 @@ public class MainTask extends Task implements Serializable{
         this.title = title;
         this.description = desc;
         this.taskId = taskId;
-
-
     }
 
     public String getEDOCString(){
@@ -36,15 +35,16 @@ public class MainTask extends Task implements Serializable{
     }
 
     public void setEDOCString(String s){
-        this.taskEDOCString = s;
+        this.taskEDOCString = taskEDOC.getTime().toString();
     }
 
-    public Date getDOC() {
+    public Calendar getDOC() {
         return taskEDOC;
     }
 
-    public void setTaskEDOS(Date d) {
+    public void setTaskEDOS(Calendar d) {
         this.taskEDOC = d;
+        setEDOCString(d.getTime().toString());
     }
 
     public void addSubTask(SubTask thisSubTask) {

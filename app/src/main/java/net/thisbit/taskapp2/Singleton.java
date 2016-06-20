@@ -27,7 +27,7 @@ public class Singleton {
     }
 
     public void addTask(MainTask t) {
-        t.setTaskId(t.getTitle().substring(0,2) + t.getDescription().substring(0,2));
+        t.setTaskId(" " + (myTasks.size()*2+1));
         myTasks.add(t);
 
 
@@ -39,6 +39,8 @@ public class Singleton {
         completedTasks.add(myTasks.get(position));
         myTasks.remove(position);
     }
+
+    public int getNumCompletedTasks() { return completedTasks.size();}
 
     public int getNumberOfTasks() {
         return myTasks.size();
