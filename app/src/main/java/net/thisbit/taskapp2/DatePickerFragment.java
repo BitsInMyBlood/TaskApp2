@@ -7,7 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,8 +21,24 @@ import java.util.Date;
 public class DatePickerFragment extends DialogFragment implements OnDateSetListener {
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, monthOfYear, dayOfMonth);
+        String thisMonth = "" + view.getMonth();
+        String thisDayOfMonth = "" + view.getDayOfMonth();
+        String thisYear = "" + view.getYear();
+        //Calendar cal = Calendar.getInstance();
+        //cal.set(year, monthOfYear, dayOfMonth);
+        //
+        String thisDate = thisMonth + "/" + thisDayOfMonth +"/" + thisYear;
+        //long date = System.currentTimeMillis();
+        // set the format that you want
+        //SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        // get the date string
+
+
+
+        AddTaskActivity.textViewObj.setText(thisDate);
+
+
+
 
     }
     @Override

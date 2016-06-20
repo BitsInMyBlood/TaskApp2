@@ -19,6 +19,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     private String thisTitle;
     private String thisDescription;
     private String thisTaskId;
+    private String thisEDOC;
 
 
     @Override
@@ -45,6 +46,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         thisTitle = thisMainTask.getTitle();
         thisDescription = thisMainTask.getDescription();
         thisTaskId = thisMainTask.getTaskId();
+        thisEDOC = thisMainTask.getEDOCString();
 
         TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
         taskTitleFieldTextView.setText(thisTitle);
@@ -52,6 +54,9 @@ public class ShowTaskActivity extends AppCompatActivity {
         taskDescFieldTextView.setText(thisDescription);
         TextView taskIdFieldTextView = (TextView) findViewById(R.id.showTaskIdTextView);
         taskIdFieldTextView.setText("ID: " + thisTaskId);
+        TextView taskEDOCFieldTextView = (TextView) findViewById(R.id.showTaskEDOCTextView);
+        assert taskEDOCFieldTextView != null;
+        taskEDOCFieldTextView.setText(thisEDOC);
     }
 
     public void isCompleteOnClick(View v) {

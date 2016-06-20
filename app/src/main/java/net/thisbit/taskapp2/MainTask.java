@@ -10,6 +10,7 @@ public class MainTask extends Task implements Serializable{
 
     private ArrayList<SubTask> subTasks;
     private Date taskEDOC;
+    private String taskEDOCString;
     /**
      *
      */
@@ -30,6 +31,21 @@ public class MainTask extends Task implements Serializable{
 
     }
 
+    public String getEDOCString(){
+        return taskEDOCString;
+    }
+
+    public void setEDOCString(String s){
+        this.taskEDOCString = s;
+    }
+
+    public Date getDOC() {
+        return taskEDOC;
+    }
+
+    public void setTaskEDOS(Date d) {
+        this.taskEDOC = d;
+    }
 
     public void addSubTask(SubTask thisSubTask) {
         thisSubTask.setTaskId(thisSubTask.getTitle().substring(0,2) + thisSubTask.getDescription().substring(0,2));

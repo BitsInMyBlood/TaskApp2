@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -23,6 +24,7 @@ import java.util.Date;
 public class AddTaskActivity extends AppCompatActivity {
     EditText taskTitleEditText;
     EditText taskDescrEditText;
+    public static TextView textViewObj;
 
 
 
@@ -32,6 +34,8 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         setTitle("Add a Task");
+
+        textViewObj = (TextView) findViewById(R.id.taskDOCTextView);
 
         taskTitleEditText = (EditText) findViewById(R.id.TaskTitleEditText);
         taskDescrEditText = (EditText) findViewById(R.id.TaskDescriptionEditText);
@@ -50,7 +54,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 String thisTitle = taskTitleEditText.getText().toString();
                 String thisDescr = taskDescrEditText.getText().toString();
-
+                String thisEDOC = AddTaskActivity.textViewObj.getText().toString();
                 String thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
 
                 // Create the task, set the attributes
@@ -58,6 +62,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 thisTask.setTitle(thisTitle);
                 thisTask.setDescription(thisDescr);
                 thisTask.setTaskId(thisId);
+                thisTask.setEDOCString(thisEDOC);
 
                 // Add the Task
                 Singleton.getInstance().addTask(thisTask);

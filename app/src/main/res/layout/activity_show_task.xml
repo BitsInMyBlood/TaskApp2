@@ -33,9 +33,10 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/showTaskIdTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:hint="TaskID"
+        android:layout_below="@+id/showTaskEDOCTextView"
+        android:layout_alignRight="@+id/showTaskEDOCTextView"
+        android:layout_alignEnd="@+id/showTaskEDOCTextView" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -57,4 +58,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/showTaskEDOCTextView"
+        android:hint="taskEDOC"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/isCompleteCheckBox"
+        android:layout_alignEnd="@+id/isCompleteCheckBox" />
 </RelativeLayout>
