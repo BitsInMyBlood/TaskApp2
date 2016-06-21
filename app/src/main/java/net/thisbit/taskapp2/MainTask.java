@@ -31,7 +31,7 @@ public class MainTask extends Task implements Serializable{
     }
 
     public String getEDOCString(){
-        return taskEDOCString;
+        return taskEDOCString.substring(0,10)+ ", "+taskEDOCString.substring(24,28);
     }
 
     public void setEDOCString(String s){

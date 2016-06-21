@@ -55,7 +55,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 thisTitle = taskTitleEditText.getText().toString();
                 thisDescr = taskDescrEditText.getText().toString();
-                thisEDOC = AddTaskActivity.textViewObj.getText().toString();
+                thisEDOC = textViewObj.getText().toString();
                // thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
 
                 // Create the task, set the attributes

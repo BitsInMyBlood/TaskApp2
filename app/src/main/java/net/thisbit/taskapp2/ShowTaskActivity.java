@@ -45,7 +45,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         MainTask thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
         thisTitle = thisMainTask.getTitle();
         thisDescription = thisMainTask.getDescription();
-        thisEDOC = thisMainTask.getEDOCString().substring(0,10) + ", " + thisMainTask.getEDOCString().substring(24, 28);
+        thisEDOC = thisMainTask.getEDOCString();
 
         TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
         taskTitleFieldTextView.setText(thisTitle);
