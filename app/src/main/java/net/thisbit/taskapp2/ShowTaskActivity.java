@@ -60,7 +60,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void isCompleteOnClick(View v) {
         MainTask thisTask = Singleton.getInstance().getMainTask(currentTaskItem);
         thisTask.isComplete = true;
-        Singleton.getInstance().getMyTasks().remove(currentTaskItem);
+        Singleton.getInstance().removeTask(currentTaskItem);
         write();
         finish();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));

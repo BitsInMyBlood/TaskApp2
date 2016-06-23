@@ -30,9 +30,6 @@ public class Singleton {
         t.setTaskId(" " + (myTasks.size()*2+1));
         myTasks.add(t);
 
-
-
-
     }
 
     public void removeTask(int position) {

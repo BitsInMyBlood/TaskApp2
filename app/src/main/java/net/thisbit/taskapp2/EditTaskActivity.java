@@ -1,14 +1,17 @@
 package net.thisbit.taskapp2;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,8 +28,10 @@ public class EditTaskActivity extends AppCompatActivity {
     private int currentTaskItem = 0;
     private String thisTitle;
     private String thisDescription;
+    private String thisEDOC;
     private MainTask thisMainTask;
     public static Calendar thisCal;
+
 
 
     @Override
@@ -55,6 +60,54 @@ public class EditTaskActivity extends AppCompatActivity {
         thisEditTaskDescrEditText.setText(thisMainTask.getDescription());
         thisEditTaskEDOCTextView.setText(thisMainTask.getEDOCString());
 
+        // try to setup the savebutton to work properly...
+
+        final Button saveButton = (Button) findViewById(R.id.editTaskSaveButton);
+        assert saveButton != null;
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = getApplicationContext();
+
+                thisTitle = thisEditTaskTitleEditText.getText().toString();
+                thisDescription = thisEditTaskDescrEditText.getText().toString();
+                thisEDOC = thisEditTaskEDOCTextView.getText().toString();
+                // thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
+
+                // Create the task, set the attributes
+                MainTask thisTask = new MainTask();
+                thisTask.setTitle(thisTitle);
+                thisTask.setDescription(thisDescription);
+                //thisTask.setTaskId(thisId);
+                thisTask.setTaskEDOS(thisCal);
+
+                // First remove the old task
+
+                Singleton.getInstance().removeTask(currentTaskItem);
+
+                // Add the Task
+                Singleton.getInstance().addTask(thisTask);
+
+
+                // Declare that its done
+                CharSequence text = "Saved";
+                Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+
+                write();
+                finish();
+                endThisActivity();
+
+
+            }
+        });
+
+    }
+
+    public void endThisActivity() {
+        Intent i = new Intent(EditTaskActivity.this, ShowTasksListActivity.class);
+        // set the new task and clear flags
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
     public void editTaskSaveButtonOnClick(View v) {

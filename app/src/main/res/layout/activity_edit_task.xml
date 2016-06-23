@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/editTaskSaveButton"
-        android:onClick="editTaskSaveButtonOnClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -51,8 +50,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="thisEDOC"
         android:id="@+id/editTaskEDOCTextView"
-        android:layout_above="@+id/editTaskDateButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBottom="@+id/editTaskDateButton"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
