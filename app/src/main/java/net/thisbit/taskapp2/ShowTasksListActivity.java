@@ -39,11 +39,9 @@ public class ShowTasksListActivity extends AppCompatActivity {
                 Intent showTaskIntent = new Intent(view.getContext(), ShowTaskActivity.class);
                 showTaskIntent.putExtra("position", position);
 
-
                 startActivityForResult(showTaskIntent, 0);
 
             }
-
 
         });
 
@@ -53,7 +51,6 @@ public class ShowTasksListActivity extends AppCompatActivity {
     public void Load() {
         ObjectInputStream ois = null;
         String filename = "myTasks.dat";
-
 
         try {
             ois = new ObjectInputStream(new FileInputStream(new File(new File(getFilesDir(), "")+File.separator+filename)));

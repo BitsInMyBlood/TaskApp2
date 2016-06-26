@@ -22,6 +22,7 @@ import java.util.Date;
 public class EditTaskDatePickerFragment extends DialogFragment implements OnDateSetListener {
     public static Calendar cal = Calendar.getInstance();
 
+
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         int thisMonth = view.getMonth()+1;
@@ -29,11 +30,10 @@ public class EditTaskDatePickerFragment extends DialogFragment implements OnDate
         int thisYear = view.getYear();
 
         cal.set(thisYear, thisMonth-1, thisDayOfMonth);
-        String thisDateString = cal.getTime().toString().substring(0,10)+ ", " + cal.getTime().toString().substring(24,28);
-        EditTaskActivity.thisCal = cal;
-        EditTaskActivity.thisEditTaskEDOCTextView.setText(thisDateString);
-
+        String thisDate = thisMonth + "/" + thisDayOfMonth +"/" + thisYear;
+        EditTaskActivity.thisEditTaskEDOCTextView.setText(thisDate);
     }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker

@@ -29,8 +29,8 @@ public class EditTaskActivity extends AppCompatActivity {
     private String thisTitle;
     private String thisDescription;
     private String thisEDOC;
-    private MainTask thisMainTask;
     public static Calendar thisCal;
+
 
 
 
@@ -38,10 +38,14 @@ public class EditTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
+        setTitle("Edit Task");
+
         thisEditTaskTitleEditText = (EditText)findViewById(R.id.editTaskTitleEditText);
         thisEditTaskDescrEditText = (EditText)findViewById(R.id.editTaskDescriptionEditText);
-        thisEditTaskEDOCTextView = (TextView) findViewById(R.id.editTaskEDOCTextView);
-        // grab the extras, position
+        thisEditTaskEDOCTextView = (TextView)findViewById(R.id.editTaskEDOCTextView);
+
+
+        // Grab the position of this task
         if(savedInstanceState == null) {
 
             Bundle extras = getIntent().getExtras();
@@ -55,94 +59,67 @@ public class EditTaskActivity extends AppCompatActivity {
             currentTaskItem = (int) savedInstanceState.getSerializable("position");
 
         }
-        thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
-        thisEditTaskTitleEditText.setText(thisMainTask.getTitle());
-        thisEditTaskDescrEditText.setText(thisMainTask.getDescription());
-        thisEditTaskEDOCTextView.setText(thisMainTask.getEDOCString());
 
-        // try to setup the savebutton to work properly...
+        // setText for the current data to be modified
+
+        thisEditTaskTitleEditText.setText(Singleton.getInstance().getMainTask(currentTaskItem).getTitle());
+        thisEditTaskDescrEditText.setText(Singleton.getInstance().getMainTask(currentTaskItem).getDescription());
+        thisEditTaskEDOCTextView.setText(Singleton.getInstance().getMainTask(currentTaskItem).getEDOCString());
+        thisCal = Singleton.getInstance().getMainTask(currentTaskItem).getDOC();
+
+        // Now we wait for the user to select "Save"
 
         final Button saveButton = (Button) findViewById(R.id.editTaskSaveButton);
         assert saveButton != null;
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
 
+                // We set the variables with current text value
+
                 thisTitle = thisEditTaskTitleEditText.getText().toString();
                 thisDescription = thisEditTaskDescrEditText.getText().toString();
-                thisEDOC = thisEditTaskEDOCTextView.getText().toString();
-                // thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
+                thisEDOC = thisCal.getTime().toString();
 
                 // Create the task, set the attributes
-                MainTask thisTask = new MainTask();
-                thisTask.setTitle(thisTitle);
-                thisTask.setDescription(thisDescription);
-                //thisTask.setTaskId(thisId);
-                thisTask.setTaskEDOS(thisCal);
+                MainTask thisMainTask= new MainTask();
+                thisMainTask.setTitle(thisTitle);
+                thisMainTask.setDescription(thisDescription);
+                thisMainTask.setTaskEDOS(thisCal);
 
-                // First remove the old task
-
+                // remove the old task
                 Singleton.getInstance().removeTask(currentTaskItem);
 
-                // Add the Task
-                Singleton.getInstance().addTask(thisTask);
-
+                // ReAdd the Task
+                Singleton.getInstance().addTask(thisMainTask);
 
                 // Declare that its done
                 CharSequence text = "Saved";
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 
                 write();
-                finish();
-                endThisActivity();
 
+                endThisActivity();
 
             }
         });
 
+
+
     }
 
+
+
     public void endThisActivity() {
-        Intent i = new Intent(EditTaskActivity.this, ShowTasksListActivity.class);
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        Intent i = new Intent(EditTaskActivity.this, MainActivity.class);
         // set the new task and clear flags
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
 
-    public void editTaskSaveButtonOnClick(View v) {
-        // Grab the current contents of Title and Desc. fields
-        thisTitle = thisEditTaskTitleEditText.getText().toString();
-        thisDescription = thisEditTaskDescrEditText.getText().toString();
-
-
-
-        // Create a new MainTask with provided infos
-        MainTask thisTask = new MainTask();
-        thisTask.setTitle(thisTitle);
-        thisTask.setDescription(thisDescription);
-
-        // Get the MainTask to update
-        thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
-
-        // Update the task
-        thisMainTask.setTitle(thisTitle);
-        thisMainTask.setDescription(thisDescription);
-        thisMainTask.setTaskEDOS(thisCal);
-
-        // Remove the old one
-        Singleton.getInstance().removeTask(currentTaskItem);
-
-        // Add the updated
-        Singleton.getInstance().addTask(thisMainTask);
-
-        // Save it
-        write();
-        // Close this activity
-        ActivityCompat.finishAffinity(this);
-        // Start a new activity, show tasks list
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-    }
 
     public void write(){
         ArrayList<MainTask> myTasks = Singleton.getInstance().getMyTasks();

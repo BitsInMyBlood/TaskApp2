@@ -30,16 +30,11 @@ public class DatePickerFragment extends DialogFragment implements OnDateSetListe
 
         cal.set(thisYear, thisMonth-1, thisDayOfMonth);
 
-
-
         String thisDate = thisMonth + "/" + thisDayOfMonth +"/" + thisYear;
 
         AddTaskActivity.textViewObj.setText(thisDate);
-
-
-
-
     }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker

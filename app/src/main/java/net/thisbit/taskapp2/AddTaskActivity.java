@@ -31,15 +31,12 @@ public class AddTaskActivity extends AppCompatActivity {
     String thisDescr = "";
     String thisEDOC = "";
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         setTitle("Add a Task");
+
         thisCal = DatePickerFragment.getCal();
         textViewObj = (TextView) findViewById(R.id.taskDOCTextView);
         taskTitleEditText = (EditText) findViewById(R.id.TaskTitleEditText);

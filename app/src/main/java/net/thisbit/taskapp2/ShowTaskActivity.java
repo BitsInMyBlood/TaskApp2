@@ -71,8 +71,6 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void editTaskOnClick(View v) {
         Intent showTaskIntent = new Intent(v.getContext(), EditTaskActivity.class);
         showTaskIntent.putExtra("position", currentTaskItem);
-
-
         startActivityForResult(showTaskIntent, 0);
     }
 
