@@ -81,7 +81,8 @@ public class EditTaskActivity extends AppCompatActivity {
 
                 thisTitle = thisEditTaskTitleEditText.getText().toString();
                 thisDescription = thisEditTaskDescrEditText.getText().toString();
-                thisEDOC = thisCal.getTime().toString();
+                thisEDOC = thisEditTaskEDOCTextView.getText().toString();
+                thisCal = EditTaskDatePickerFragment.getCal();
 
                 // Create the task, set the attributes
                 MainTask thisMainTask= new MainTask();

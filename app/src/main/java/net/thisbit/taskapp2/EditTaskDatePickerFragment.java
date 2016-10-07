@@ -25,12 +25,10 @@ public class EditTaskDatePickerFragment extends DialogFragment implements OnDate
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        int thisMonth = view.getMonth()+1;
-        int thisDayOfMonth = view.getDayOfMonth();
-        int thisYear = view.getYear();
-
-        cal.set(thisYear, thisMonth-1, thisDayOfMonth);
-        String thisDate = thisMonth + "/" + thisDayOfMonth +"/" + thisYear;
+        // Set the calendar object with what was picked
+        cal.set(year, monthOfYear, dayOfMonth);
+        // now set the TextView to reflect the new date
+        String thisDate = cal.getTime().toString().substring(0,10)+ ", "+cal.getTime().toString().substring(24,28);
         EditTaskActivity.thisEditTaskEDOCTextView.setText(thisDate);
     }
 
