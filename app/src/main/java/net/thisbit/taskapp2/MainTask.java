@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class MainTask extends Task implements Serializable{
 
-    private ArrayList<SubTask> subTasks;
+    private ArrayList<SubTask> subTasks = new ArrayList<SubTask>();
     private Calendar taskEDOC;
     private String taskEDOCString;
     /**
@@ -34,6 +34,10 @@ public class MainTask extends Task implements Serializable{
         return taskEDOCString.substring(0,10)+ ", "+taskEDOCString.substring(24,28);
     }
 
+    public String getNumSubtasks() {
+        return "" + subTasks.size();
+    }
+
     public void setEDOCString(String s){
         this.taskEDOCString = taskEDOC.getTime().toString();
     }
@@ -48,7 +52,6 @@ public class MainTask extends Task implements Serializable{
     }
 
     public void addSubTask(SubTask thisSubTask) {
-        thisSubTask.setTaskId(thisSubTask.getTitle().substring(0,2) + thisSubTask.getDescription().substring(0,2));
         subTasks.add(thisSubTask);
     }
 }

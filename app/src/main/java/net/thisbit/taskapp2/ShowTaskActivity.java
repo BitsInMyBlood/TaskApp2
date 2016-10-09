@@ -18,15 +18,14 @@ public class ShowTaskActivity extends AppCompatActivity {
     private int currentTaskItem = 0;
     private String thisTitle;
     private String thisDescription;
-    private String thisTaskId;
     private String thisEDOC;
+    //private String numSubtasks;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_task);
-
 
         if(savedInstanceState == null) {
 
@@ -46,11 +45,14 @@ public class ShowTaskActivity extends AppCompatActivity {
         thisTitle = thisMainTask.getTitle();
         thisDescription = thisMainTask.getDescription();
         thisEDOC = thisMainTask.getEDOCString();
+        String numSubtasks = thisMainTask.getNumSubtasks();
 
         TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
         taskTitleFieldTextView.setText(thisTitle);
         TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
         taskDescFieldTextView.setText(thisDescription);
+        TextView numSubTasksTextView = (TextView) findViewById(R.id.numSubTasksTextView);
+        numSubTasksTextView.setText(numSubtasks);
 
         TextView taskEDOCFieldTextView = (TextView) findViewById(R.id.showTaskEDOCTextView);
         assert taskEDOCFieldTextView != null;
@@ -66,6 +68,12 @@ public class ShowTaskActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
 
+    }
+
+    public void addSubTaskOnClick(View v) {
+        Intent addSubTaskIntent = new Intent(v.getContext(), AddSubTaskActivity.class);
+        addSubTaskIntent.putExtra("position", currentTaskItem);
+        startActivityForResult(addSubTaskIntent, 0);
     }
 
     public void editTaskOnClick(View v) {

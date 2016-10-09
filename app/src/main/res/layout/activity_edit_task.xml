@@ -15,15 +15,10 @@
         android:id="@+id/editTaskTitleEditText"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTaskDescriptionEditText"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="thisTitle" />
 
     <Button
         android:layout_width="wrap_content"
@@ -50,7 +45,30 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="thisEDOC"
         android:id="@+id/editTaskEDOCTextView"
-        android:layout_alignBottom="@+id/editTaskDateButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/editTaskTitleEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="+Subtask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTaskDescriptionEditText"
+        android:text="thisDescr"
+        android:layout_below="@+id/editTaskEDOCTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/editTaskSaveButton" />
 
 </RelativeLayout>

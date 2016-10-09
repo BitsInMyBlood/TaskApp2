@@ -13,30 +13,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Task title..."
         android:id="@+id/showTaskTitleTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/showTaskDescrTextView"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/is_complete"
-        android:id="@+id/isCompleteCheckBox"
-        android:onClick="isCompleteOnClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="24sp"
+        android:layout_toLeftOf="@+id/isCompleteCheckBox"
+        android:layout_toStartOf="@+id/isCompleteCheckBox" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -46,7 +30,28 @@
         android:id="@+id/editTaskButton"
         android:onClick="editTaskOnClick"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/add_subtask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addSubTaskButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="addSubTaskOnClick" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/is_complete"
+        android:id="@+id/isCompleteCheckBox"
+        android:onClick="isCompleteOnClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +60,49 @@
         android:id="@+id/showTaskEDOCTextView"
         android:hint="taskEDOC"
         android:textSize="12dp"
-        android:layout_alignBottom="@+id/editTaskButton"
+        android:layout_below="@+id/isCompleteCheckBox"
+        android:layout_alignRight="@+id/showTaskDescrTextView"
+        android:layout_alignEnd="@+id/showTaskDescrTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task description..."
+        android:id="@+id/showTaskDescrTextView"
+        android:layout_below="@+id/showTaskEDOCTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/editTaskButton" />
+
+    <Button
+        android:text="Subtasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showTaskDescrTextView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button8" />
+
+    <TextView
+        android:text="SubTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showTaskTitleTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numSubTasksTextView"
+        android:hint="Num"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/addSubTaskButton"
+        android:layout_alignStart="@+id/addSubTaskButton" />
+
 </RelativeLayout>
