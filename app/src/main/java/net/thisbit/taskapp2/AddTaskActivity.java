@@ -1,13 +1,11 @@
 package net.thisbit.taskapp2;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,13 +18,12 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity {
     EditText taskTitleEditText;
     EditText taskDescrEditText;
     public static TextView textViewObj;
-    Calendar thisCal;
+    public static Calendar thisCal;
     String thisTitle = "";
     String thisDescr = "";
     String thisEDOC = "";
@@ -38,7 +35,9 @@ public class AddTaskActivity extends AppCompatActivity {
         setTitle("Add a Task");
 
         thisCal = DatePickerFragment.getCal();
-        textViewObj = (TextView) findViewById(R.id.taskDOCTextView);
+        thisEDOC = thisCal.toString().substring(0,10)+thisCal.toString().substring(24,28);
+        textViewObj = (TextView) findViewById(R.id.taskEDOCTextView);
+        textViewObj.setText(thisCal.getTime().toString().substring(0,10) + "," + thisCal.getTime().toString().substring(24,28));
         taskTitleEditText = (EditText) findViewById(R.id.TaskTitleEditText);
         taskDescrEditText = (EditText) findViewById(R.id.TaskDescriptionEditText);
 
@@ -53,13 +52,11 @@ public class AddTaskActivity extends AppCompatActivity {
                 thisTitle = taskTitleEditText.getText().toString();
                 thisDescr = taskDescrEditText.getText().toString();
                 thisEDOC = textViewObj.getText().toString();
-               // thisId = thisTitle.substring(0,2) + thisDescr.substring(0,2);
 
                 // Create the task, set the attributes
                 MainTask thisTask = new MainTask();
                 thisTask.setTitle(thisTitle);
                 thisTask.setDescription(thisDescr);
-                //thisTask.setTaskId(thisId);
                 thisTask.setTaskEDOS(thisCal);
 
                 // Add the Task
@@ -75,9 +72,9 @@ public class AddTaskActivity extends AppCompatActivity {
                 taskDescrEditText.setText("");
                 textViewObj.setText("");
 
-
-
                 write();
+
+                endThisActivity();
             }
         });
 
@@ -102,6 +99,14 @@ public class AddTaskActivity extends AppCompatActivity {
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void endThisActivity() {
+        startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
+        Intent i = new Intent(AddTaskActivity.this, ShowTasksListActivity.class);
+        // set the new task and clear flags
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
 }

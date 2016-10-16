@@ -3,24 +3,32 @@ package net.thisbit.taskapp2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class ShowTaskActivity extends AppCompatActivity {
     private int currentTaskItem = 0;
     private String thisTitle;
     private String thisDescription;
     private String thisEDOC;
-    //private String numSubtasks;
-
+    private String thisNumSubTasks;
+    private ArrayList<SubTask> thisSubTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,25 +42,46 @@ public class ShowTaskActivity extends AppCompatActivity {
                 currentTaskItem = 0;
             } else {
                 currentTaskItem = extras.getInt("position");
-
             }
         } else {
             currentTaskItem = (int) savedInstanceState.getSerializable("position");
 
         }
-        //
+        // Load the current task
         MainTask thisMainTask = Singleton.getInstance().getMainTask(currentTaskItem);
         thisTitle = thisMainTask.getTitle();
         thisDescription = thisMainTask.getDescription();
         thisEDOC = thisMainTask.getEDOCString();
-        String numSubtasks = thisMainTask.getNumSubtasks();
+        thisSubTasks = thisMainTask.getSubTasks();
+        thisNumSubTasks = thisMainTask.getNumSubtasks();
 
+        // populate the ListView with subtasks
+        final ArrayAdapter<SubTask> subTaskListArrayAdapter = new ArrayAdapter<SubTask>(this, android.R.layout.simple_list_item_1, Singleton.myTasks.get(currentTaskItem).getSubTasks());
+        final ListView listTasksListView = (ListView) findViewById(R.id.showTaskListView);
+        listTasksListView.setAdapter(subTaskListArrayAdapter);
+        listTasksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent showSubTaskIntent = new Intent(view.getContext(), ShowSubTaskActivity.class);
+                showSubTaskIntent.putExtra("subtaskposition", position);
+                showSubTaskIntent.putExtra("position", currentTaskItem);
+
+                startActivityForResult(showSubTaskIntent, 0);
+
+            }
+
+        });
+        // finished ListView population
+
+
+        // populate the textviews with data
         TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
         taskTitleFieldTextView.setText(thisTitle);
         TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
         taskDescFieldTextView.setText(thisDescription);
         TextView numSubTasksTextView = (TextView) findViewById(R.id.numSubTasksTextView);
-        numSubTasksTextView.setText(numSubtasks);
+        numSubTasksTextView.setText(thisNumSubTasks);
 
         TextView taskEDOCFieldTextView = (TextView) findViewById(R.id.showTaskEDOCTextView);
         assert taskEDOCFieldTextView != null;
@@ -66,7 +95,6 @@ public class ShowTaskActivity extends AppCompatActivity {
         write();
         finish();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
 
     }
 
@@ -95,4 +123,6 @@ public class ShowTaskActivity extends AppCompatActivity {
         } catch (IOException e) { e.printStackTrace();
         }
     }
+
+
 }

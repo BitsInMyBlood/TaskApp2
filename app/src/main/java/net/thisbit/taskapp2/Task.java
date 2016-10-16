@@ -16,7 +16,7 @@ public class Task implements Serializable {
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
-        this.taskId = title.substring(0,2) + description.substring(0,2);
+
 
 
 
@@ -42,11 +42,6 @@ public class Task implements Serializable {
 
     public boolean getComplete() {return isComplete;}
 
-    public String getTaskId() { return taskId;}
-
-    public void setTaskId(String Id) {
-        this.taskId = Id;
-    }
 
 
     }

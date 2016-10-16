@@ -44,8 +44,6 @@ public class ShowTasksListActivity extends AppCompatActivity {
             }
 
         });
-
-
     }
 
     public void Load() {

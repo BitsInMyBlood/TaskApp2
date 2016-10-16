@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_add_sub_task"
-    android:label="Add SubTask"
+    android:id="@+id/activity_edit_sub_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="net.thisbit.taskapp2.AddSubTaskActivity">
-
-    <Button
-        android:text="@string/select_edoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/subTaskDateButton"
-        android:onClick="showDatePickerDialog"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    tools:context="net.thisbit.taskapp2.EditSubTaskActivity">
 
     <Button
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/subTaskSaveButton"
+        android:id="@+id/editSubTaskSaveButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:text="Edit Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editSubTaskSaveButton"
+        android:onClick="editSubTaskShowDatePickerDialog"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editSubTaskEditDateButton" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="@string/enter_subtask_name"
+        android:text="Title"
         android:ems="10"
-        android:id="@+id/subTaskTitleEditText"
+        android:id="@+id/editSubTaskTitleEditText"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/addSubTaskEDOCTextView"
+        android:layout_toStartOf="@+id/editSubTaskEDOCTextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -48,22 +47,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="@string/enter_subtask_description"
+        android:text="Description"
         android:ems="10"
-        android:id="@+id/subTaskDescrEditText"
-        android:layout_below="@+id/subTaskTitleEditText"
+        android:layout_below="@+id/editSubTaskTitleEditText"
+        android:id="@+id/editSubTaskDescrEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/editSubTaskSaveButton" />
 
     <TextView
+        android:text="EDOC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/addSubTaskEDOCTextView"
-        android:hint="EDOC"
-        android:text="EDOC (Date)"
-        android:layout_above="@+id/subTaskSaveButton"
+        android:id="@+id/editSubTaskEDOCTextView"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

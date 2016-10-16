@@ -29,46 +29,35 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Date"
-        android:id="@+id/editTaskDateButton"
-        android:layout_alignBottom="@+id/editTaskSaveButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="showDatePickerDialog" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="thisEDOC"
         android:id="@+id/editTaskEDOCTextView"
-        android:layout_below="@+id/editTaskTitleEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/editTaskDateButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="+Subtask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Edit Date"
+        android:id="@+id/editTaskDateButton"
+        android:onClick="showDatePickerDialog"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button6" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTaskDescriptionEditText"
         android:text="thisDescr"
-        android:layout_below="@+id/editTaskEDOCTextView"
+        android:layout_below="@+id/editTaskTitleEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/editTaskSaveButton" />
+        android:layout_above="@+id/editTaskEDOCTextView" />
 
 </RelativeLayout>

@@ -10,26 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.AddTaskActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/taskEDOCTextView"
+        android:text="(no date selected)"
+        android:layout_above="@+id/button3"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskTitleEditText"
+        android:hint="@string/enter_task_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TaskDescriptionEditText"
-        android:layout_below="@+id/TaskTitleEditText"
-        android:layout_marginTop="56dp"
         android:hint="@string/enter_description"
+        android:layout_below="@+id/TaskTitleEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/taskDOCTextView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/taskDOCTextView"
-        android:text="@string/selected_date"
-        android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/taskEDOCTextView" />
 
     <Button
         android:layout_width="wrap_content"
@@ -41,31 +51,12 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="+SubTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button7"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_edoc"
         android:id="@+id/button3"
         android:onClick="showDatePickerDialog"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/taskDOCTextView"
-        android:layout_alignStart="@+id/taskDOCTextView" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TaskTitleEditText"
-        android:hint="@string/enter_task_name"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 /**
@@ -16,6 +17,7 @@ public class Singleton {
     private static Singleton mInstance = null;
     public static ArrayList<MainTask> myTasks = new ArrayList<MainTask>();
     public static ArrayList<MainTask> completedTasks = new ArrayList<MainTask>();
+    
 
     public static Singleton getInstance() {
         if (mInstance == null) {
@@ -27,9 +29,12 @@ public class Singleton {
     }
 
     public void addTask(MainTask t) {
-        t.setTaskId(" " + (myTasks.size()*2+1));
         myTasks.add(t);
 
+    }
+
+    public MainTask getTask(int p) {
+        return myTasks.get(p);
     }
 
     public void removeTask(int position) {
@@ -50,6 +55,8 @@ public class Singleton {
     public ArrayList getMyTasks() {
         return myTasks;
     }
+
+    public ArrayList getCompletedTasks() { return completedTasks;}
 
     public void restoreMyTasks(ArrayList a) {
         myTasks = a;

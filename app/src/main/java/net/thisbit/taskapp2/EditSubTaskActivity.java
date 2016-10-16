@@ -19,87 +19,100 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AddSubTaskActivity extends AppCompatActivity {
+public class EditSubTaskActivity extends AppCompatActivity {
 
-    EditText subtaskTitleEditText;
-    EditText subtaskDescrEditText;
-    public static TextView subtaskTextViewObj;
+    private EditText editSubTaskTitleEditText;
+    private EditText editSubTaskDescrEditText;
+    public static TextView editSubTaskEDOCTextView;
+    private int currentTaskItem = 0;
+    private int currentSubTask = 0;
+    private String thisTitle;
+    private String thisDescription;
+    private String thisEDOC;
     public static Calendar thisCal;
-    String thisTitle = "";
-    String thisDescr = "";
-    String thisEDOC = "EDOC";
-    int currentTaskItem = 0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_sub_task);
-        setTitle("Add a SubTask");
+        setContentView(R.layout.activity_edit_sub_task);
+        setTitle("Edit SubTask");
 
-        // grab the task and subtask positions
+        editSubTaskTitleEditText =  (EditText) findViewById(R.id.editSubTaskTitleEditText);
+        editSubTaskDescrEditText = (EditText) findViewById(R.id.editSubTaskDescrEditText);
+        editSubTaskEDOCTextView = (TextView) findViewById(R.id.editSubTaskEDOCTextView);
+
         if(savedInstanceState == null) {
 
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
                 currentTaskItem = 0;
+                currentSubTask = 0;
             } else {
                 currentTaskItem = extras.getInt("position");
+                currentSubTask = extras.getInt("subtaskposition");
+
             }
         } else {
             currentTaskItem = (int) savedInstanceState.getSerializable("position");
+            currentSubTask = (int) savedInstanceState.getSerializable("subtaskposition");
 
         }
 
-        // setup the textview objects
-        thisCal = AddSubTaskDatePickerFragment.getCal();
-        subtaskTextViewObj = (TextView) findViewById(R.id.addSubTaskEDOCTextView);
-        subtaskTextViewObj.setText(thisCal.getTime().toString().substring(0,10) + "," + thisCal.getTime().toString().substring(24,28));
-        subtaskTitleEditText = (EditText) findViewById(R.id.subTaskTitleEditText);
-        subtaskDescrEditText = (EditText) findViewById(R.id.subTaskDescrEditText);
+        // setText for the current data to be modififed
+        editSubTaskTitleEditText.setText(Singleton.getInstance().getMainTask(currentTaskItem).getSubTask(currentSubTask).getTitle());
+        editSubTaskDescrEditText.setText(Singleton.getInstance().getMainTask(currentTaskItem).getSubTask(currentSubTask).getDescription());
+        editSubTaskEDOCTextView.setText(Singleton.getInstance().getMainTask(currentTaskItem).getSubTask(currentSubTask).getEDOCString());
 
-        final Button saveButton = (Button) findViewById(R.id.subTaskSaveButton);
+        // now we wait for the user to modify the fields, and press SAVE
+
+        final Button saveButton = (Button) findViewById(R.id.editSubTaskSaveButton);
         assert saveButton != null;
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
 
-                thisTitle = subtaskTitleEditText.getText().toString();
-                thisDescr = subtaskDescrEditText.getText().toString();
-                thisEDOC = subtaskTextViewObj.getText().toString();
+                // We set the variables with current text value
 
+                thisTitle = ((EditText) findViewById(R.id.editSubTaskTitleEditText)).getText().toString();
+                thisDescription = ((EditText) findViewById(R.id.editSubTaskDescrEditText)).getText().toString();
+                thisEDOC = ((TextView) findViewById(R.id.editSubTaskEDOCTextView)).getText().toString();
+                thisCal = EditSubTaskDatePickerFragment.getCal();
+
+                // Create the task, set the attributes
                 SubTask thisSubTask = new SubTask();
                 thisSubTask.setTitle(thisTitle);
-                thisSubTask.setDescription(thisDescr);
+                thisSubTask.setDescription(thisDescription);
                 thisSubTask.setTaskEDOS(thisCal);
-                thisSubTask.setEDOCString();
-                // Add the SubTask
-                Singleton.getInstance().getTask(currentTaskItem).addSubTask(thisSubTask);
+
+                //
+                Singleton.getInstance().getMainTask(currentTaskItem).addSubTask(thisSubTask, currentSubTask);
 
                 // Declare that its done
                 CharSequence text = "Saved";
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 
-                // Clear the Fields
-                subtaskTitleEditText.setText("");
-                subtaskDescrEditText.setText("");
-                subtaskTextViewObj.setText("");
-
-                // Save the changes
                 write();
 
                 endThisActivity();
 
-
             }
         });
+
+
+
+
 
 
     }
 
     public void endThisActivity() {
         startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
-        Intent i = new Intent(AddSubTaskActivity.this, ShowTasksListActivity.class);
+        Intent i = new Intent(EditSubTaskActivity.this, ShowTasksListActivity.class);
         // set the new task and clear flags
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
@@ -119,8 +132,8 @@ public class AddSubTaskActivity extends AppCompatActivity {
         }
     }
 
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new AddSubTaskDatePickerFragment();
+    public void editSubTaskShowDatePickerDialog(View v) {
+        DialogFragment newFragment = new EditSubTaskDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 }
