@@ -10,14 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.AddTaskActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/taskEDOCTextView"
-        android:text="(no date selected)"
-        android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,20 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TaskDescriptionEditText"
-        android:hint="@string/enter_description"
-        android:layout_below="@+id/TaskTitleEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/taskEDOCTextView" />
+        android:layout_alignEnd="@+id/button8" />
 
     <Button
         android:layout_width="wrap_content"
@@ -64,9 +43,27 @@
         android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/taskEDOCTextView"
-        android:layout_centerHorizontal="true"
         android:id="@+id/button8"
-        android:onClick="cancelButtonOnClick" />
+        android:onClick="cancelButtonOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskDescriptionEditText"
+        android:hint="@string/enter_description"
+        android:layout_below="@+id/TaskTitleEditText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/taskEDOCTextView"
+        android:text="(no date selected)"
+        android:layout_alignBaseline="@+id/TaskTitleEditText"
+        android:layout_alignBottom="@+id/TaskTitleEditText"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
