@@ -69,19 +69,7 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/showTaskEDOCTextView"
-        android:layout_alignStart="@+id/addSubTaskButton" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Task description..."
-        android:id="@+id/showTaskDescrTextView"
-        android:layout_below="@+id/numSubTasksTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/showTaskListView"
-        android:layout_above="@+id/showTaskEDOCTextView" />
+        android:layout_toEndOf="@+id/showTaskDescrTextView" />
 
     <Button
         android:text="Back"
@@ -105,11 +93,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Task description..."
+        android:id="@+id/showTaskDescrTextView"
+        android:layout_below="@+id/numSubTasksTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/showTaskEDOCTextView"
+        android:layout_above="@+id/button5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/showTaskEDOCTextView"
         android:hint="taskEDOC"
         android:textSize="12dp"
-        android:layout_above="@+id/editTaskButton"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/editTaskButton" />
 
 </RelativeLayout>

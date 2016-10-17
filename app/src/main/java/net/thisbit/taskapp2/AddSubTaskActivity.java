@@ -99,15 +99,14 @@ public class AddSubTaskActivity extends AppCompatActivity {
 
     public void endThisActivity() {
         startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
-        Intent i = new Intent(AddSubTaskActivity.this, ShowTasksListActivity.class);
+        Intent i = new Intent(AddSubTaskActivity.this, ShowTaskActivity.class);
         // set the new task and clear flags
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
 
     public void cancelButtonOnClick(View v) {
-        Intent showTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
-        startActivityForResult(showTaskIntent, 0);
+        finish();
     }
 
     public void write(){

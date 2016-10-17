@@ -31,16 +31,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/editSubTaskEDOCTextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="EDOC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editSubTaskEDOCTextView"
-        android:layout_above="@+id/showSubTaskEditButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/showSubTaskDescrTextView" />
 
     <CheckBox
         android:text="Completed?"
@@ -70,5 +61,13 @@
         android:onClick="editSubTaskOnClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="EDOC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editSubTaskEDOCTextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
