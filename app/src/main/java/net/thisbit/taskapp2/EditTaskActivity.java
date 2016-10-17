@@ -115,8 +115,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     public void backButtonOnClick(View v) {
-        Intent showTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
-        startActivityForResult(showTaskIntent, 0);
+        finish();
     }
 
 
