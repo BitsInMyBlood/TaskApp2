@@ -36,6 +36,10 @@ public class MainTask extends Task implements Serializable{
         return taskEDOCString.substring(0,10)+ ", "+taskEDOCString.substring(24,28);
     }
 
+    public void addSubTasks(ArrayList<SubTask> s) {
+        this.subTasks = s;
+    }
+
     public String getNumSubtasks() {
         return "" + subTasks.size();
     }

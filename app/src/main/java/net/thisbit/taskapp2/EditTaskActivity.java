@@ -30,6 +30,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private String thisDescription;
     private String thisEDOC;
     public static Calendar thisCal;
+    private ArrayList<SubTask> subTasks = new ArrayList<SubTask>();
 
 
 
@@ -66,6 +67,7 @@ public class EditTaskActivity extends AppCompatActivity {
         thisEditTaskDescrEditText.setText(Singleton.getInstance().getMainTask(currentTaskItem).getDescription());
         thisEditTaskEDOCTextView.setText(Singleton.getInstance().getMainTask(currentTaskItem).getEDOCString());
         thisCal = Singleton.getInstance().getMainTask(currentTaskItem).getDOC();
+        subTasks = Singleton.getInstance().getMainTask(currentTaskItem).getSubTasks();
 
         // Now we wait for the user to select "Save"
 
@@ -89,6 +91,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 thisMainTask.setTitle(thisTitle);
                 thisMainTask.setDescription(thisDescription);
                 thisMainTask.setTaskEDOS(thisCal);
+                thisMainTask.addSubTasks(subTasks);
 
                 // remove the old task
                 Singleton.getInstance().removeTask(currentTaskItem);
@@ -110,6 +113,12 @@ public class EditTaskActivity extends AppCompatActivity {
 
 
     }
+
+    public void backButtonOnClick(View v) {
+        Intent showTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
+        startActivityForResult(showTaskIntent, 0);
+    }
+
 
 
 

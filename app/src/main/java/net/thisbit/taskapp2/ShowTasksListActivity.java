@@ -65,4 +65,17 @@ public class ShowTasksListActivity extends AppCompatActivity {
         }
 
     }
+
+    public void homeButtonOnClick(View v) {
+        Intent showTaskIntent = new Intent(v.getContext(), MainActivity.class);
+        startActivityForResult(showTaskIntent, 0);
+
+    }
+
+    public void addTaskButtonOnClick(View v) {
+        Intent showTaskIntent = new Intent(v.getContext(), AddTaskActivity.class);
+        startActivityForResult(showTaskIntent, 0);
+    }
+
+
 }

@@ -22,15 +22,6 @@
         android:layout_above="@+id/showSubTaskEditButton"
         android:layout_below="@+id/editSubTaskCheckBox" />
 
-    <Button
-        android:text="Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/showSubTaskEditButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="editSubTaskOnClick" />
-
     <TextView
         android:text="Title"
         android:layout_width="wrap_content"
@@ -60,6 +51,24 @@
         tools:onClick="subTaskIsCompleteOnClick"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button10"
+        android:onClick="backButtonOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showSubTaskEditButton"
+        android:onClick="editSubTaskOnClick"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

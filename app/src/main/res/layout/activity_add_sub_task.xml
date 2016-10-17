@@ -66,4 +66,13 @@
         android:layout_above="@+id/subTaskSaveButton"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addSubTaskEDOCTextView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button7"
+        android:onClick="cancelButtonOnClick" />
+
 </RelativeLayout>

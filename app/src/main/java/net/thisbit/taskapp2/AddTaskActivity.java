@@ -101,6 +101,11 @@ public class AddTaskActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
+    public void cancelButtonOnClick(View v) {
+        Intent showTaskIntent = new Intent(v.getContext(), MainActivity.class);
+        startActivityForResult(showTaskIntent, 0);
+    }
+
     public void endThisActivity() {
         startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
         Intent i = new Intent(AddTaskActivity.this, ShowTasksListActivity.class);

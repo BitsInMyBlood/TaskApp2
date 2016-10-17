@@ -136,4 +136,9 @@ public class EditSubTaskActivity extends AppCompatActivity {
         DialogFragment newFragment = new EditSubTaskDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
+
+    public void cancelButtonOnClick(View v) {
+        Intent showTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
+        startActivityForResult(showTaskIntent, 0);
+    }
 }

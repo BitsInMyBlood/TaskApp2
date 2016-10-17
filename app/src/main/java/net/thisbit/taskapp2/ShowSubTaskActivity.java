@@ -80,6 +80,11 @@ public class ShowSubTaskActivity extends AppCompatActivity {
 
     }
 
+    public void backButtonOnClick(View v) {
+        Intent showTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
+        startActivityForResult(showTaskIntent, 0);
+    }
+
     public void write(){
         ArrayList<MainTask> myTasks = Singleton.getInstance().getMyTasks();
         String filename = "myTasks.dat";
