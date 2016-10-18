@@ -105,7 +105,9 @@ public class EditTaskActivity extends AppCompatActivity {
 
                 write();
 
-                endThisActivity();
+                Intent addSubTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
+                addSubTaskIntent.putExtra("position", currentTaskItem);
+                startActivityForResult(addSubTaskIntent, 0);
 
             }
         });
@@ -114,8 +116,10 @@ public class EditTaskActivity extends AppCompatActivity {
 
     }
 
-    public void backButtonOnClick(View v) {
-        finish();
+    public void homeButtonOnClick(View v) {
+        Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
+        addSubTaskIntent.putExtra("position", currentTaskItem);
+        startActivityForResult(addSubTaskIntent, 0);
     }
 
 

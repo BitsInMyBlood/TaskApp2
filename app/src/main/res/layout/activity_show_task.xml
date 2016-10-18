@@ -62,7 +62,7 @@
         android:layout_alignStart="@+id/addSubTaskButton" />
 
     <Button
-        android:text="Back"
+        android:text="Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button5"

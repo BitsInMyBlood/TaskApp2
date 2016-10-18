@@ -98,7 +98,9 @@ public class EditSubTaskActivity extends AppCompatActivity {
 
                 write();
 
-                endThisActivity();
+                Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
+                addSubTaskIntent.putExtra("position", currentTaskItem);
+                startActivityForResult(addSubTaskIntent, 0);
 
             }
         });
@@ -115,6 +117,7 @@ public class EditSubTaskActivity extends AppCompatActivity {
         Intent i = new Intent(EditSubTaskActivity.this, ShowTasksListActivity.class);
         // set the new task and clear flags
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.putExtra("position", currentTaskItem);
         startActivity(i);
     }
 
@@ -137,7 +140,9 @@ public class EditSubTaskActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public void cancelButtonOnClick(View v) {
-        finish();
+    public void backButtonOnClick(View v) {
+        Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
+        addSubTaskIntent.putExtra("position", currentTaskItem);
+        startActivityForResult(addSubTaskIntent, 0);
     }
 }

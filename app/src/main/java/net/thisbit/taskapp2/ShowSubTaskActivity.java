@@ -76,12 +76,25 @@ public class ShowSubTaskActivity extends AppCompatActivity {
         Singleton.getInstance().getMainTask(currentTaskItem).removeSubTask(currentSubTask);
         write();
         finish();
-        startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
+        // Start the ShowTaskActivity
+        startActivity(new Intent(getApplicationContext(), ShowTaskActivity.class));
+        Intent i = new Intent(ShowSubTaskActivity.this, ShowTaskActivity.class);
+        // set the new task and clear flags
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.putExtra("position", currentTaskItem);
+        i.putExtra("subtaskposition", currentSubTask);
+        startActivity(i);
 
     }
 
     public void backButtonOnClick(View v) {
-        finish();
+        startActivity(new Intent(getApplicationContext(), ShowTaskActivity.class));
+        Intent i = new Intent(ShowSubTaskActivity.this, ShowTaskActivity.class);
+        // set the new task and clear flags
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.putExtra("position", currentTaskItem);
+        i.putExtra("subtaskposition", currentSubTask);
+        startActivity(i);
     }
 
     public void write(){

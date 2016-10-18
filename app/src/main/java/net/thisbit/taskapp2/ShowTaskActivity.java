@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
 
 public class ShowTaskActivity extends AppCompatActivity {
     private int currentTaskItem = 0;
-    private String thisTitle;
+    private String thisTitle = "";
     private String thisDescription;
     private String thisEDOC;
     private String thisNumSubTasks;
@@ -35,6 +35,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_task);
 
+        // grab the extras to show the task
         if(savedInstanceState == null) {
 
             Bundle extras = getIntent().getExtras();
@@ -66,7 +67,7 @@ public class ShowTaskActivity extends AppCompatActivity {
                 Intent showSubTaskIntent = new Intent(view.getContext(), ShowSubTaskActivity.class);
                 showSubTaskIntent.putExtra("subtaskposition", position);
                 showSubTaskIntent.putExtra("position", currentTaskItem);
-
+                finish();
                 startActivityForResult(showSubTaskIntent, 0);
 
             }
@@ -93,15 +94,14 @@ public class ShowTaskActivity extends AppCompatActivity {
         thisTask.isComplete = true;
         Singleton.getInstance().removeTask(currentTaskItem);
         write();
-        finish();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
     }
 
     public void addSubTaskOnClick(View v) {
         Intent addSubTaskIntent = new Intent(v.getContext(), AddSubTaskActivity.class);
         addSubTaskIntent.putExtra("position", currentTaskItem);
         startActivityForResult(addSubTaskIntent, 0);
+
     }
 
     public void editTaskOnClick(View v) {
@@ -111,8 +111,8 @@ public class ShowTaskActivity extends AppCompatActivity {
     }
 
     public void homeButtonOnClick(View v) {
-        Intent showTaskIntent = new Intent(v.getContext(), ShowTasksListActivity.class);
-        startActivityForResult(showTaskIntent, 0);
+        finish();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     public void write(){

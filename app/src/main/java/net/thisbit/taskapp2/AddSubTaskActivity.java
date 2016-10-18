@@ -88,7 +88,12 @@ public class AddSubTaskActivity extends AppCompatActivity {
                 // Save the changes
                 write();
 
-                endThisActivity();
+                startActivity(new Intent(getApplicationContext(), ShowTaskActivity.class));
+                Intent i = new Intent(AddSubTaskActivity.this, ShowTaskActivity.class);
+                // set the new task and clear flags
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.putExtra("position", currentTaskItem);
+                startActivity(i);
 
 
             }
@@ -98,15 +103,14 @@ public class AddSubTaskActivity extends AppCompatActivity {
     }
 
     public void endThisActivity() {
-        startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
-        Intent i = new Intent(AddSubTaskActivity.this, ShowTaskActivity.class);
-        // set the new task and clear flags
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
+        finish();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     public void cancelButtonOnClick(View v) {
-        finish();
+        Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
+        addSubTaskIntent.putExtra("position", currentTaskItem);
+        startActivityForResult(addSubTaskIntent, 0);
     }
 
     public void write(){
