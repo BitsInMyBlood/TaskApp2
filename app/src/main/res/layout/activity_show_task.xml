@@ -109,6 +109,7 @@
         android:id="@+id/showTaskListView"
         android:layout_below="@+id/textView2"
         android:layout_above="@+id/addSubTaskButton"
-        android:layout_toEndOf="@+id/editTaskButton" />
+        android:layout_toEndOf="@+id/editTaskButton"
+        android:textColor="#7024F5" />
 
 </RelativeLayout>
