@@ -42,7 +42,27 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/addSubTaskEDOCTextView"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button7"
+        android:onClick="cancelButtonOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addSubTaskEDOCTextView"
+        android:hint="EDOC"
+        android:text="EDOC (Date)"
+        android:layout_below="@+id/subTaskTitleEditText"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button7" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -51,28 +71,10 @@
         android:hint="@string/enter_subtask_description"
         android:ems="10"
         android:id="@+id/subTaskDescrEditText"
-        android:layout_below="@+id/subTaskTitleEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addSubTaskEDOCTextView"
-        android:hint="EDOC"
-        android:text="EDOC (Date)"
-        android:layout_above="@+id/subTaskSaveButton"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/addSubTaskEDOCTextView"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button7"
-        android:onClick="cancelButtonOnClick" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/subTaskDateButton"
+        android:textSize="18sp" />
 
 </RelativeLayout>

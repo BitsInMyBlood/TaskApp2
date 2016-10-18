@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/button8" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,22 +48,23 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TaskDescriptionEditText"
-        android:hint="@string/enter_description"
-        android:layout_below="@+id/TaskTitleEditText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/taskEDOCTextView"
         android:text="(no date selected)"
-        android:layout_alignBaseline="@+id/TaskTitleEditText"
-        android:layout_alignBottom="@+id/TaskTitleEditText"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/TaskTitleEditText"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button8" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskDescriptionEditText"
+        android:hint="@string/enter_description"
+        android:layout_below="@+id/taskEDOCTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/saveButton" />
 
 </RelativeLayout>

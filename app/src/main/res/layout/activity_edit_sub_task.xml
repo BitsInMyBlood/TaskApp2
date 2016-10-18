@@ -43,20 +43,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Description"
-        android:ems="10"
-        android:layout_below="@+id/editSubTaskTitleEditText"
-        android:id="@+id/editSubTaskDescrEditText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/editSubTaskSaveButton" />
-
     <Button
         android:text="Cancel"
         android:layout_width="wrap_content"
@@ -71,7 +57,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editSubTaskEDOCTextView"
-        android:layout_above="@+id/button9"
-        android:layout_alignStart="@+id/button9"
-        android:layout_alignEnd="@+id/button9" />
+        android:layout_below="@+id/editSubTaskTitleEditText"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button9" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Description"
+        android:ems="10"
+        android:id="@+id/editSubTaskDescrEditText"
+        android:textAlignment="textStart"
+        android:layout_below="@+id/editSubTaskEDOCTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/editSubTaskSaveButton" />
 </RelativeLayout>

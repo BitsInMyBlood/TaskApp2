@@ -10,29 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.ShowSubTaskActivity">
 
-    <TextView
-        android:text="Description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/showSubTaskDescrTextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/showSubTaskEditButton"
-        android:layout_below="@+id/editSubTaskCheckBox" />
-
-    <TextView
-        android:text="Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/showSubTaskTitleTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/editSubTaskEDOCTextView"
-        android:layout_above="@+id/showSubTaskDescrTextView" />
-
     <CheckBox
         android:text="Completed?"
         android:layout_width="wrap_content"
@@ -63,11 +40,32 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
+        android:text="Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showSubTaskTitleTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/editSubTaskCheckBox"
+        android:textSize="24sp" />
+
+    <TextView
         android:text="EDOC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editSubTaskEDOCTextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/showSubTaskTitleTextView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showSubTaskDescrTextView"
+        android:layout_below="@+id/editSubTaskEDOCTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/button10"
+        android:textSize="18sp" />
 
 </RelativeLayout>

@@ -89,7 +89,8 @@
         android:layout_above="@+id/button5"
         android:layout_toStartOf="@+id/showTaskListView"
         android:layout_alignEnd="@+id/editTaskButton"
-        android:layout_alignTop="@+id/showTaskListView" />
+        android:layout_alignTop="@+id/showTaskListView"
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
