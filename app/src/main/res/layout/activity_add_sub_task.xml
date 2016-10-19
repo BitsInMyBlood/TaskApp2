@@ -15,6 +15,7 @@
         android:text="@string/select_edoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#39F730"
         android:id="@+id/subTaskDateButton"
         android:onClick="showDatePickerDialog"
         android:layout_alignParentBottom="true"
@@ -25,6 +26,7 @@
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#39F730"
         android:id="@+id/subTaskSaveButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -49,6 +51,7 @@
         android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#39F730"
         android:id="@+id/button7"
         android:onClick="cancelButtonOnClick"
         android:layout_alignParentBottom="true"
@@ -67,14 +70,16 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:hint="@string/enter_subtask_description"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:ems="10"
         android:id="@+id/subTaskDescrEditText"
         android:layout_below="@+id/addSubTaskEDOCTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/subTaskDateButton"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_above="@+id/subTaskDateButton" />
 
 </RelativeLayout>
