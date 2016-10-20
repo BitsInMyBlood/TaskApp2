@@ -11,29 +11,6 @@
     android:background="@drawable/bg1"
     tools:context="net.thisbit.taskapp2.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:text="Add Task"
-        android:id="@+id/button"
-        android:onClick="buttonOnClickAddTask"
-        android:nestedScrollingEnabled="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:text="Show Tasks"
-        android:id="@+id/button2"
-        android:onClick="buttonOnClickShowTasks"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
@@ -43,6 +20,27 @@
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-7577640825571918/2685188665">
     </com.google.android.gms.ads.AdView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="Show Tasks"
+        android:id="@+id/button2"
+        android:onClick="buttonOnClickShowTasks"
+        android:layout_above="@+id/adView"
+        android:layout_alignEnd="@+id/adView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="Add Task"
+        android:id="@+id/button"
+        android:onClick="buttonOnClickAddTask"
+        android:nestedScrollingEnabled="true"
+        android:layout_above="@+id/adView"
+        android:layout_alignStart="@+id/adView" />
 
 
 </RelativeLayout>

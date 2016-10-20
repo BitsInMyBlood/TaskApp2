@@ -9,15 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.ShowTasksListActivity">
 
-    <Button
-        android:text="Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/button4"
-        android:onClick="homeButtonOnClick" />
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,4 +26,14 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/button11"
         android:onClick="addTaskButtonOnClick" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:id="@+id/button4"
+        android:onClick="homeButtonOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

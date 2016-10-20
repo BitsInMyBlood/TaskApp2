@@ -67,7 +67,9 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:text="Description"
         android:ems="10"
         android:id="@+id/editSubTaskDescrEditText"
