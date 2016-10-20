@@ -35,7 +35,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences|textMultiLine"
         android:hint="@string/enter_subtask_name"
         android:ems="10"
         android:id="@+id/subTaskTitleEditText"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_subtask_description"
         android:gravity="top|left"
-        android:inputType="textMultiLine"
+        android:inputType="textCapSentences|textMultiLine"
         android:singleLine="false"
         android:ems="10"
         android:id="@+id/subTaskDescrEditText"
