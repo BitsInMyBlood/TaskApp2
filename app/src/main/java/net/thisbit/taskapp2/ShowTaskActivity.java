@@ -3,6 +3,7 @@ package net.thisbit.taskapp2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_task);
+        setTitle("Show Task");
 
         // grab the extras to show the task
         if(savedInstanceState == null) {
@@ -74,6 +76,7 @@ public class ShowTaskActivity extends AppCompatActivity {
         taskTitleFieldTextView.setText(thisTitle);
         TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
         taskDescFieldTextView.setText(thisDescription);
+        taskDescFieldTextView.setMovementMethod(new ScrollingMovementMethod());
         TextView numSubTasksTextView = (TextView) findViewById(R.id.numSubTasksTextView);
         numSubTasksTextView.setText(thisNumSubTasks);
 

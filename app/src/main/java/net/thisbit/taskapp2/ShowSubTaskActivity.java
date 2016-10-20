@@ -3,6 +3,7 @@ package net.thisbit.taskapp2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 import java.io.File;
@@ -58,6 +59,7 @@ public class ShowSubTaskActivity extends AppCompatActivity {
 
         TextView taskDescrTextView = (TextView) findViewById(R.id.showSubTaskDescrTextView);
         taskDescrTextView.setText(thisDescription);
+        taskDescrTextView.setMovementMethod(new ScrollingMovementMethod());
 
         TextView subTaskEDOCTextView = (TextView) findViewById(R.id.editSubTaskEDOCTextView);
         assert subTaskEDOCTextView != null;
