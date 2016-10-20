@@ -25,22 +25,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/mybutton"
-        android:text="Show Tasks"
-        android:id="@+id/button2"
-        android:onClick="buttonOnClickShowTasks"
-        android:layout_above="@+id/adView"
-        android:layout_alignEnd="@+id/adView" />
+        android:text="Add Task"
+        android:id="@+id/button"
+        android:onClick="buttonOnClickAddTask"
+        android:nestedScrollingEnabled="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/mybutton"
-        android:text="Add Task"
-        android:id="@+id/button"
-        android:onClick="buttonOnClickAddTask"
-        android:nestedScrollingEnabled="true"
-        android:layout_above="@+id/adView"
-        android:layout_alignStart="@+id/adView" />
+        android:text="Show Tasks"
+        android:id="@+id/button2"
+        android:onClick="buttonOnClickShowTasks"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
