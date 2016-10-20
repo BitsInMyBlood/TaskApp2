@@ -30,6 +30,7 @@ public class AddSubTaskDatePickerFragment extends DialogFragment implements Date
         String thisDate = cal.getTime().toString().substring(0,10)+ ", "+cal.getTime().toString().substring(24,28);
         AddSubTaskActivity.subtaskTextViewObj.setText(thisDate);
         AddSubTaskActivity.thisCal = cal;
+
     }
 
     @Override
