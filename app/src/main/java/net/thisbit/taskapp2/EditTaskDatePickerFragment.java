@@ -3,18 +3,11 @@ package net.thisbit.taskapp2;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.view.View;
 import android.widget.DatePicker;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
 
 /**
  * Created by christian on 6/15/2016.

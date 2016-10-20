@@ -1,9 +1,7 @@
 package net.thisbit.taskapp2;
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+
 
 /**
  * Created by christian on 4/18/2016.
