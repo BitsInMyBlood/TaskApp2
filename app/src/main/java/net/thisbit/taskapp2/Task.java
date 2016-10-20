@@ -38,8 +38,6 @@ public class Task implements Serializable {
 
     public boolean getComplete() {return isComplete;}
 
-
-
     }
 
 
