@@ -10,27 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.AddTaskActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textCapSentences|textMultiLine"
-        android:id="@+id/TaskTitleEditText"
-        android:hint="@string/enter_task_name"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:text="@string/save_task"
-        android:id="@+id/saveButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,19 +17,18 @@
         android:text="@string/select_edoc"
         android:id="@+id/button3"
         android:onClick="showDatePickerDialog"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="Cancel"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:id="@+id/button8"
-        android:onClick="cancelButtonOnClick"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:inputType="textCapSentences|textMultiLine"
+        android:id="@+id/TaskTitleEditText"
+        android:hint="@string/enter_task_name"
+        android:layout_below="@+id/button3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +37,7 @@
         android:text="(no date selected)"
         android:layout_below="@+id/TaskTitleEditText"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/button8" />
+        android:layout_alignEnd="@+id/TaskTitleEditText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -72,6 +50,25 @@
         android:layout_below="@+id/taskEDOCTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/saveButton" />
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:id="@+id/button8"
+        android:onClick="cancelButtonOnClick"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:text="@string/save_task"
+        android:id="@+id/saveButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

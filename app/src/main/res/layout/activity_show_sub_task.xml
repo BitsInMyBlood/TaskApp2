@@ -10,17 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.thisbit.taskapp2.ShowSubTaskActivity">
 
-    <CheckBox
-        android:text="Completed?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="subTaskIsCompleteOnClick"
-        android:id="@+id/editSubTaskCheckBox"
-        tools:onClick="subTaskIsCompleteOnClick"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <Button
         android:text="Back"
         android:layout_width="wrap_content"
@@ -28,28 +17,18 @@
         android:background="@drawable/mybutton"
         android:id="@+id/button10"
         android:onClick="backButtonOnClick"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:id="@+id/showSubTaskEditButton"
-        android:onClick="editSubTaskOnClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showSubTaskTitleTextView"
-        android:layout_alignParentTop="true"
+        android:textSize="24sp"
+        android:layout_below="@+id/button10"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/editSubTaskCheckBox"
-        android:textSize="24sp" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="EDOC"
@@ -57,7 +36,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/editSubTaskEDOCTextView"
         android:layout_below="@+id/showSubTaskTitleTextView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/showSubTaskEditButton" />
 
     <TextView
         android:text="Description"
@@ -68,10 +48,30 @@
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:id="@+id/showSubTaskDescrTextView"
+        android:textSize="18sp"
         android:layout_below="@+id/editSubTaskEDOCTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/button10"
-        android:textSize="18sp" />
+        android:layout_alignParentBottom="true" />
+
+    <CheckBox
+        android:text="Completed?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="subTaskIsCompleteOnClick"
+        android:id="@+id/editSubTaskCheckBox"
+        tools:onClick="subTaskIsCompleteOnClick"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:id="@+id/showSubTaskEditButton"
+        android:onClick="editSubTaskOnClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
