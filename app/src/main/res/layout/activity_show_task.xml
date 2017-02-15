@@ -14,31 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/showTaskListView"
-        android:layout_toEndOf="@+id/editTaskButton"
         android:textColor="#7024F5"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/showTaskDescrTextView" />
-
-    <Button
-        android:text="Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:id="@+id/button5"
-        android:onClick="homeButtonOnClick"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Task title..."
-        android:id="@+id/showTaskTitleTextView"
-        android:textSize="24sp"
-        android:layout_below="@+id/button5"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/showTaskListView"
-        android:layout_alignParentEnd="true" />
+        android:layout_toEndOf="@+id/showTaskEDOCTextView"
+        android:layout_below="@+id/isCompleteCheckBox"
+        android:layout_above="@+id/addSubTaskButton" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,10 +25,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/showTaskEDOCTextView"
         android:hint="taskEDOC"
-        android:textSize="12dp"
-        android:layout_below="@+id/showTaskTitleTextView"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/editTaskButton" />
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,27 +39,29 @@
         android:text="Task description..."
         android:id="@+id/showTaskDescrTextView"
         android:textSize="18sp"
-        android:layout_below="@+id/showTaskEDOCTextView"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/isCompleteCheckBox"
         android:layout_toStartOf="@+id/showTaskListView"
-        android:layout_alignParentBottom="true" />
+        android:layout_above="@+id/editTaskButton" />
 
-    <TextView
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/numSubTasksTextView"
-        android:hint="Num" />
+        android:text="@string/is_complete"
+        android:id="@+id/isCompleteCheckBox"
+        android:onClick="isCompleteOnClick"
+        android:layout_below="@+id/showTaskEDOCTextView"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/mybutton"
         android:text="@string/edit"
         android:id="@+id/editTaskButton"
         android:onClick="editTaskOnClick"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/add_subtask"
@@ -90,16 +70,7 @@
         android:background="@drawable/mybutton"
         android:id="@+id/addSubTaskButton"
         android:onClick="addSubTaskOnClick"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/is_complete"
-        android:id="@+id/isCompleteCheckBox"
-        android:onClick="isCompleteOnClick"
-        android:layout_above="@+id/showTaskListView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

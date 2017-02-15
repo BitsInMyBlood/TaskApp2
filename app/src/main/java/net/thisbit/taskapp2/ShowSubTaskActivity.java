@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import java.io.File;
@@ -18,16 +19,19 @@ public class ShowSubTaskActivity extends AppCompatActivity {
 
     private int currentTaskItem;
     private int currentSubTask;
+    private int subtaskNumber;
     private String thisTitle;
+    private String mainTaskTitle;
     private String thisDescription;
     private String thisEDOCString;
+    private String titleString;
     private Calendar thisEDOC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_sub_task);
-        setTitle("Show SubTask");
+
 
         // Grab the Extras task position, subtask position
         if(savedInstanceState == null) {
@@ -46,10 +50,17 @@ public class ShowSubTaskActivity extends AppCompatActivity {
 
         }
 
-        // Load the current MainTask
+        // Create the titleString
+        subtaskNumber = currentSubTask + 1;
+        titleString = "SubTask " + subtaskNumber + " from " + Singleton.getInstance().getMainTask(currentTaskItem).getTitle();
 
+        // Set the title
+        setTitle(titleString);
+
+        // Load the current MainTask
         SubTask thisSubTask = Singleton.getInstance().getMainTask(currentTaskItem).getSubTask(currentSubTask);
         thisTitle = thisSubTask.getTitle();
+        mainTaskTitle = Singleton.getInstance().getMainTask(currentTaskItem).getTitle();
         thisDescription = thisSubTask.getDescription();
         thisEDOCString = thisSubTask.getEDOCString();
 
@@ -88,16 +99,6 @@ public class ShowSubTaskActivity extends AppCompatActivity {
 
     }
 
-    public void backButtonOnClick(View v) {
-        startActivity(new Intent(getApplicationContext(), ShowTaskActivity.class));
-        Intent i = new Intent(ShowSubTaskActivity.this, ShowTaskActivity.class);
-        // set the new task and clear flags
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        i.putExtra("position", currentTaskItem);
-        i.putExtra("subtaskposition", currentSubTask);
-        startActivity(i);
-    }
-
     public void write(){
         ArrayList<MainTask> myTasks = Singleton.getInstance().getMyTasks();
         String filename = "myTasks.dat";
@@ -111,4 +112,13 @@ public class ShowSubTaskActivity extends AppCompatActivity {
         } catch (IOException e) { e.printStackTrace();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent setIntent = new Intent(this, ShowTaskActivity.class);
+        setIntent.putExtra("position", currentTaskItem);
+        startActivityForResult(setIntent, 0);
+    }
+
 }

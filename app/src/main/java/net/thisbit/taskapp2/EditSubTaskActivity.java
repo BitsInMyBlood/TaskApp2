@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,21 +105,6 @@ public class EditSubTaskActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-    }
-
-    public void endThisActivity() {
-        startActivity(new Intent(getApplicationContext(), ShowTasksListActivity.class));
-        Intent i = new Intent(EditSubTaskActivity.this, ShowTasksListActivity.class);
-        // set the new task and clear flags
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        i.putExtra("position", currentTaskItem);
-        startActivity(i);
     }
 
     public void write(){
@@ -140,9 +126,12 @@ public class EditSubTaskActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public void backButtonOnClick(View v) {
-        Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
-        addSubTaskIntent.putExtra("position", currentTaskItem);
-        startActivityForResult(addSubTaskIntent, 0);
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent setIntent = new Intent(this, ShowSubTaskActivity.class);
+        setIntent.putExtra("position", currentTaskItem);
+        setIntent.putExtra("subtaskposition", currentSubTask);
+        startActivityForResult(setIntent, 0);
     }
 }

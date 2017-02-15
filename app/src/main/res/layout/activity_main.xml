@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/mybutton"
-        android:text="Add Task"
+        android:text="@string/add_a_task"
         android:id="@+id/button"
         android:onClick="buttonOnClickAddTask"
         android:nestedScrollingEnabled="true"

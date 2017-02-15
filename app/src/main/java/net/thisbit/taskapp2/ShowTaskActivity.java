@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,14 +22,12 @@ public class ShowTaskActivity extends AppCompatActivity {
     private String thisTitle = "";
     private String thisDescription;
     private String thisEDOC;
-    private String thisNumSubTasks;
     private ArrayList<SubTask> thisSubTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_task);
-        setTitle("Show Task");
 
         // grab the extras to show the task
         if(savedInstanceState == null) {
@@ -49,7 +48,9 @@ public class ShowTaskActivity extends AppCompatActivity {
         thisDescription = thisMainTask.getDescription();
         thisEDOC = thisMainTask.getEDOCString();
         thisSubTasks = thisMainTask.getSubTasks();
-        thisNumSubTasks = thisMainTask.getNumSubtasks();
+
+        // set the title
+        setTitle(thisMainTask.getTitle());
 
         // populate the ListView with subtasks
         final ArrayAdapter<SubTask> subTaskListArrayAdapter = new ArrayAdapter<SubTask>(this, android.R.layout.simple_list_item_1, Singleton.myTasks.get(currentTaskItem).getSubTasks());
@@ -72,13 +73,9 @@ public class ShowTaskActivity extends AppCompatActivity {
 
 
         // populate the textviews with data
-        TextView taskTitleFieldTextView = (TextView) findViewById(R.id.showTaskTitleTextView);
-        taskTitleFieldTextView.setText(thisTitle);
         TextView taskDescFieldTextView = (TextView) findViewById(R.id.showTaskDescrTextView);
         taskDescFieldTextView.setText(thisDescription);
         taskDescFieldTextView.setMovementMethod(new ScrollingMovementMethod());
-        TextView numSubTasksTextView = (TextView) findViewById(R.id.numSubTasksTextView);
-        numSubTasksTextView.setText(thisNumSubTasks);
 
         TextView taskEDOCFieldTextView = (TextView) findViewById(R.id.showTaskEDOCTextView);
         assert taskEDOCFieldTextView != null;
@@ -123,6 +120,13 @@ public class ShowTaskActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) { e.printStackTrace();
         } catch (IOException e) { e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent setIntent = new Intent(this, ShowTasksListActivity.class);
+        startActivityForResult(setIntent, 0);
     }
 
 

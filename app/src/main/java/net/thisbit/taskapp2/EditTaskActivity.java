@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -121,8 +122,6 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
 
-
-
     public void endThisActivity() {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         Intent i = new Intent(EditTaskActivity.this, MainActivity.class);
@@ -150,6 +149,5 @@ public class EditTaskActivity extends AppCompatActivity {
         DialogFragment newFragment = new EditTaskDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
-
 
 }

@@ -72,5 +72,12 @@ public class ShowTasksListActivity extends AppCompatActivity {
         startActivityForResult(showTaskIntent, 0);
     }
 
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent setIntent = new Intent(this, MainActivity.class);
+        startActivityForResult(setIntent, 0);
+    }
+
 
 }

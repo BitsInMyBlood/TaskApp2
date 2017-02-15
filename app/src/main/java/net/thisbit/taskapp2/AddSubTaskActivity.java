@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -131,4 +132,5 @@ public class AddSubTaskActivity extends AppCompatActivity {
         DialogFragment newFragment = new AddSubTaskDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
+
 }
