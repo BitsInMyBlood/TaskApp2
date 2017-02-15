@@ -116,11 +116,11 @@ public class AddSubTaskActivity extends AppCompatActivity {
 
     public void write(){
         ArrayList<MainTask> myTasks = Singleton.getInstance().getMyTasks();
-        String filename = "myTasks.dat";
+        String filename = "myTasks";
         ObjectOutputStream oos = null;
 
         try {
-            oos = new ObjectOutputStream(new FileOutputStream(new File(getFilesDir(),"")+File.separator+filename));
+            oos = new ObjectOutputStream(new FileOutputStream(new File(getExternalFilesDir(null),"")+File.separator+filename));
             oos.writeObject(myTasks);
             oos.close();
         } catch (FileNotFoundException e) { e.printStackTrace();
