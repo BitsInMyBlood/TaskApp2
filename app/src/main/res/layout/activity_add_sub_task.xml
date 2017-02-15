@@ -12,13 +12,32 @@
     tools:context="net.thisbit.taskapp2.AddSubTaskActivity">
 
     <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:id="@+id/subTaskSaveButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:id="@+id/button7"
+        android:onClick="cancelButtonOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
         android:text="@string/select_edoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/mybutton"
         android:id="@+id/subTaskDateButton"
         android:onClick="showDatePickerDialog"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -29,37 +48,9 @@
         android:ems="10"
         android:id="@+id/subTaskTitleEditText"
         android:textSize="24sp"
-        android:layout_below="@+id/subTaskDateButton"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:id="@+id/button7"
-        android:onClick="cancelButtonOnClick"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:id="@+id/subTaskSaveButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addSubTaskEDOCTextView"
-        android:hint="EDOC"
-        android:text="EDOC (Date)"
-        android:layout_below="@+id/subTaskTitleEditText"
-        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,6 +65,15 @@
         android:layout_below="@+id/addSubTaskEDOCTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_above="@+id/subTaskSaveButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addSubTaskEDOCTextView"
+        android:hint="EDOC"
+        android:text="EDOC (Date)"
+        android:layout_below="@+id/subTaskTitleEditText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

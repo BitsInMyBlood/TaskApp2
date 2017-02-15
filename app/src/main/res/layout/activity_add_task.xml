@@ -14,10 +14,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/mybutton"
+        android:text="@string/save_task"
+        android:id="@+id/saveButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
         android:text="@string/select_edoc"
         android:id="@+id/button3"
         android:onClick="showDatePickerDialog"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -26,7 +35,8 @@
         android:inputType="textCapSentences|textMultiLine"
         android:id="@+id/TaskTitleEditText"
         android:hint="@string/enter_task_name"
-        android:layout_below="@+id/button3"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -36,8 +46,7 @@
         android:id="@+id/taskEDOCTextView"
         android:text="(no date selected)"
         android:layout_below="@+id/TaskTitleEditText"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/TaskTitleEditText" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -50,25 +59,6 @@
         android:layout_below="@+id/taskEDOCTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true" />
-
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:id="@+id/button8"
-        android:onClick="cancelButtonOnClick"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:text="@string/save_task"
-        android:id="@+id/saveButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/saveButton" />
 
 </RelativeLayout>
