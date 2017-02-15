@@ -118,6 +118,7 @@ public class ShowSubTaskActivity extends AppCompatActivity {
         Log.d("CDA", "onBackPressed Called");
         Intent setIntent = new Intent(this, ShowTaskActivity.class);
         setIntent.putExtra("position", currentTaskItem);
+        this.finish();
         startActivityForResult(setIntent, 0);
     }
 

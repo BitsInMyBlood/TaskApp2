@@ -126,6 +126,7 @@ public class ShowTaskActivity extends AppCompatActivity {
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
         Intent setIntent = new Intent(this, ShowTasksListActivity.class);
+        this.finish();
         startActivityForResult(setIntent, 0);
     }
 
