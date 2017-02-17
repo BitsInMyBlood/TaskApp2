@@ -78,9 +78,6 @@ public class AddTaskActivity extends AppCompatActivity {
                 endThisActivity();
             }
         });
-
-
-
     }
 
     public void write(){

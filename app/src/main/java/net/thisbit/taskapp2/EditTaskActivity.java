@@ -110,26 +110,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
-
-    public void homeButtonOnClick(View v) {
-        Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
-        addSubTaskIntent.putExtra("position", currentTaskItem);
-        startActivityForResult(addSubTaskIntent, 0);
-    }
-
-
-    public void endThisActivity() {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        Intent i = new Intent(EditTaskActivity.this, MainActivity.class);
-        // set the new task and clear flags
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
-    }
-
 
     public void write(){
         ArrayList<MainTask> myTasks = Singleton.getInstance().getMyTasks();
