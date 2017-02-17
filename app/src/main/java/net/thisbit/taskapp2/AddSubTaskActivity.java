@@ -103,11 +103,6 @@ public class AddSubTaskActivity extends AppCompatActivity {
 
     }
 
-    public void endThisActivity() {
-        finish();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-    }
-
     public void cancelButtonOnClick(View v) {
         Intent addSubTaskIntent = new Intent(v.getContext(), ShowTaskActivity.class);
         addSubTaskIntent.putExtra("position", currentTaskItem);

@@ -43,7 +43,7 @@ public class ShowTasksListActivity extends AppCompatActivity {
 
     public void Load() {
         ObjectInputStream ois = null;
-        String filename = "myTasks.dat";
+        String filename = "myTasks";
 
         try {
             ois = new ObjectInputStream(new FileInputStream(new File(new File(getFilesDir(), "")+File.separator+filename)));
@@ -58,12 +58,6 @@ public class ShowTasksListActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    public void homeButtonOnClick(View v) {
-        Intent showTaskIntent = new Intent(v.getContext(), MainActivity.class);
-        startActivityForResult(showTaskIntent, 0);
 
     }
 

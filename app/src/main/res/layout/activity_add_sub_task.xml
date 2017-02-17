@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="textCapSentences|textMultiLine"
         android:hint="@string/enter_subtask_name"
-        android:ems="10"
+        android:gravity="left"
         android:id="@+id/subTaskTitleEditText"
         android:textSize="24sp"
         android:layout_alignParentTop="true"
