@@ -46,7 +46,7 @@ public class ShowTasksListActivity extends AppCompatActivity {
         String filename = "myTasks";
 
         try {
-            ois = new ObjectInputStream(new FileInputStream(new File(new File(getFilesDir(), "")+File.separator+filename)));
+            ois = new ObjectInputStream(new FileInputStream(new File(new File(getExternalFilesDir(null), "")+File.separator+filename)));
             ArrayList<MainTask> loadedTasks = (ArrayList) ois.readObject();
             Log.v("serialization", "Size of ArrayList: " + loadedTasks.size());
             ois.close();
