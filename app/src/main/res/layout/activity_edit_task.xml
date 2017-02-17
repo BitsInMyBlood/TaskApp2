@@ -34,7 +34,7 @@
         android:id="@+id/editTaskTitleEditText"
         android:inputType="textCapSentences|textMultiLine"
         android:textSize="24sp"
-        android:gravity="center"
+        android:gravity="left"
         android:hint="Enter a task title here"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
